@@ -1,0 +1,107 @@
+@import "tailwindcss";
+
+/*
+ * ---------------------------------------------------------------------------
+ * Design tokens
+ * ---------------------------------------------------------------------------
+ * Everything visual is driven from here. When the branding lands, changing the
+ * five accent/surface values below re-skins the whole site; no component needs
+ * to be touched. Tailwind v4 picks these up as utilities automatically, so
+ * `bg-brand` and `text-ink-muted` work out of the box.
+ */
+
+@theme {
+  /* Brand — #007448 (forest green). */
+  --color-brand: oklch(0.47 0.11 160);
+  --color-brand-strong: oklch(0.38 0.1 160);
+  --color-brand-soft: oklch(0.95 0.025 160);
+  --color-accent: oklch(0.78 0.15 75);
+
+  /* Surfaces and text — tinted toward the brand hue. */
+  --color-surface: oklch(1 0 0);
+  --color-surface-muted: oklch(0.975 0.006 160);
+  --color-surface-sunken: oklch(0.945 0.01 160);
+  --color-line: oklch(0.9 0.012 160);
+  --color-ink: oklch(0.22 0.02 160);
+  --color-ink-muted: oklch(0.52 0.015 160);
+
+  /* Feedback. Positive is a distinct, warmer green so it doesn't read as a brand button. */
+  --color-positive: oklch(0.64 0.15 142);
+  --color-negative: oklch(0.6 0.19 25);
+
+  /* Type. Swap the family once the brand font is decided. */
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  --radius-card: 0.875rem;
+}
+
+/* Dark mode mirrors the same token names, so components stay theme-agnostic. */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --color-surface: oklch(0.19 0.015 160);
+    --color-surface-muted: oklch(0.23 0.018 160);
+    --color-surface-sunken: oklch(0.16 0.015 160);
+    --color-line: oklch(0.32 0.02 160);
+    --color-ink: oklch(0.96 0.005 160);
+    --color-ink-muted: oklch(0.72 0.015 160);
+    --color-brand: oklch(0.72 0.14 160);
+    --color-brand-strong: oklch(0.82 0.11 160);
+    --color-brand-soft: oklch(0.28 0.05 160);
+  }
+}
+
+:root[data-theme="dark"] {
+  --color-surface: oklch(0.19 0.015 160);
+  --color-surface-muted: oklch(0.23 0.018 160);
+  --color-surface-sunken: oklch(0.16 0.015 160);
+  --color-line: oklch(0.32 0.02 160);
+  --color-ink: oklch(0.96 0.005 160);
+  --color-ink-muted: oklch(0.72 0.015 160);
+  --color-brand: oklch(0.72 0.14 160);
+  --color-brand-strong: oklch(0.82 0.11 160);
+  --color-brand-soft: oklch(0.28 0.05 160);
+}
+
+/* --------------------------------------------------------------- base --- */
+
+html {
+  color-scheme: light dark;
+}
+
+body {
+  background-color: var(--color-surface);
+  color: var(--color-ink);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Visible focus everywhere; a beamer-lit room is a bad place for subtle. */
+:where(a, button, input, select, textarea, [tabindex]):focus-visible {
+  outline: 2px solid var(--color-brand);
+  outline-offset: 2px;
+  border-radius: 0.25rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ------------------------------------------------------------ utilities -- */
+
+@utility container-page {
+  margin-inline: auto;
+  width: 100%;
+  max-width: 72rem;
+  padding-inline: 1rem;
+}
+
+@media (min-width: 640px) {
+  .container-page {
+    padding-inline: 1.5rem;
+  }
+}
