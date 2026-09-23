@@ -5,7 +5,6 @@ import Link from "next/link";
 import { useCallback, useState } from "react";
 import type { Dictionary } from "@/i18n";
 import { t } from "@/i18n";
-import type { Locale } from "@/i18n/config";
 import type { LobbyTeam, PublicQuestion, ServerMessage, Standing } from "@/lib/live/protocol";
 import { Button, Card, Input, Notice } from "@/components/ui";
 import { useCountdown, useLiveSocket } from "./useLiveSocket";
@@ -38,12 +37,10 @@ type View =
 export function LivePlayer({
   code,
   token,
-  locale,
   d,
 }: {
   code: string;
   token: string;
-  locale: Locale;
   d: Dictionary;
 }) {
   const [view, setView] = useState<View>({ kind: "lobby", teams: [] });
@@ -102,7 +99,7 @@ export function LivePlayer({
       <Card className="mx-auto max-w-lg text-center">
         <p className="text-lg font-semibold text-ink">{d.live.notFound}</p>
         <Link
-          href={`/${locale}/games`}
+          href="/games"
           className="mt-4 inline-block font-medium text-brand-strong hover:underline"
         >
           {d.common.back}
@@ -272,7 +269,7 @@ export function LivePlayer({
           <Standings title={d.live.finalStandings} rows={view.standings} d={d} />
           <div className="text-center">
             <Link
-              href={`/${locale}/games`}
+              href="/games"
               className="font-medium text-brand-strong hover:underline"
             >
               {d.live.backToGames}

@@ -3,8 +3,7 @@ import Link from "next/link";
 import { eq } from "drizzle-orm";
 import { db } from "@/lib/db";
 import { embeds } from "@/lib/db/schema";
-import { getDictionary } from "@/i18n";
-import { isLocale, type Locale } from "@/i18n/config";
+import { dictionary as d } from "@/i18n";
 import { embedStage } from "@/lib/schedule";
 import { Badge, Notice } from "@/components/ui";
 import { CountdownTimer } from "@/components/CountdownTimer";
@@ -24,11 +23,9 @@ export const dynamic = "force-dynamic";
 export default async function EmbedPage({
   params,
 }: {
-  params: Promise<{ locale: string; slug: string }>;
+  params: Promise<{ slug: string }>;
 }) {
-  const { locale: raw, slug } = await params;
-  const locale = (isLocale(raw) ? raw : "de") as Locale;
-  const d = getDictionary(locale);
+  const { slug } = await params;
 
   const [embed] = await db.select().from(embeds).where(eq(embeds.slug, slug)).limit(1);
   if (!embed) notFound();
@@ -38,7 +35,7 @@ export default async function EmbedPage({
   return (
     <div className="container-page py-8 sm:py-12">
       <div className="flex flex-wrap items-center gap-3">
-        <Link href={`/${locale}/games`} className="text-sm text-ink-muted hover:text-ink">
+        <Link href="/games" className="text-sm text-ink-muted hover:text-ink">
           ← {d.nav.games}
         </Link>
       </div>

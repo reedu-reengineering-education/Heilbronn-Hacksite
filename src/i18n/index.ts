@@ -1,12 +1,6 @@
-import de, { type Dictionary } from "./dictionaries/de";
-import en from "./dictionaries/en";
-import { type Locale } from "./config";
+import dictionary, { type Dictionary } from "./dictionaries/en";
 
-const dictionaries: Record<Locale, Dictionary> = { de, en };
-
-export function getDictionary(locale: Locale): Dictionary {
-  return dictionaries[locale];
-}
+export { dictionary };
 
 /**
  * Fills `{name}` placeholders: t(d.live.questionOf, { current: 2, total: 10 }).
@@ -18,4 +12,3 @@ export function t(template: string, values: Record<string, string | number>): st
 }
 
 export type { Dictionary };
-export * from "./config";

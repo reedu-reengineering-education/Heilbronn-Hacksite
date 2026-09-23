@@ -3,7 +3,6 @@
 import { useActionState } from "react";
 import { useFormStatus } from "react-dom";
 import type { Dictionary } from "@/i18n";
-import type { Locale } from "@/i18n/config";
 import { Button, Card, Field, Input, Notice } from "@/components/ui";
 import { adminLoginAction, type AdminState } from "./actions";
 
@@ -18,14 +17,13 @@ function SubmitButton({ label }: { label: string }) {
   );
 }
 
-export function AdminLogin({ locale, d }: { locale: Locale; d: Dictionary }) {
+export function AdminLogin({ d }: { d: Dictionary }) {
   const [state, action] = useActionState(adminLoginAction, initialState);
 
   return (
     <Card className="max-w-sm">
       <h2 className="text-lg font-semibold text-ink">{d.admin.logInTitle}</h2>
       <form action={action} className="mt-4 space-y-4">
-        <input type="hidden" name="locale" value={locale} />
         <Field label={d.admin.passphraseLabel}>
           <Input name="passphrase" type="password" required autoComplete="current-password" />
         </Field>

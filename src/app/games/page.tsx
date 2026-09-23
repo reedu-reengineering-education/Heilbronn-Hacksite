@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
-import { getDictionary, type Dictionary } from "@/i18n";
-import { isLocale, type Locale } from "@/i18n/config";
+import { dictionary as d, type Dictionary } from "@/i18n";
 import { getTeamSession } from "@/lib/session";
 import { getLeaderboard } from "@/lib/scores";
 import { getGameSchedule, type ScheduleItem } from "@/lib/schedule";
@@ -12,20 +11,9 @@ import { signOutAction } from "../team/actions";
 
 export const dynamic = "force-dynamic";
 
-export async function generateMetadata({
-  params,
-}: {
-  params: Promise<{ locale: string }>;
-}): Promise<Metadata> {
-  const { locale } = await params;
-  return { title: getDictionary(isLocale(locale) ? locale : "de").games.title };
-}
+export const metadata: Metadata = { title: d.games.title };
 
-export default async function GamesPage({ params }: { params: Promise<{ locale: string }> }) {
-  const { locale: raw } = await params;
-  const locale = (isLocale(raw) ? raw : "de") as Locale;
-  const d = getDictionary(locale);
-
+export default async function GamesPage() {
   const team = await getTeamSession();
 
   // Signed out: this page's whole job is to get you signed in, so the forms
@@ -34,14 +22,14 @@ export default async function GamesPage({ params }: { params: Promise<{ locale: 
     return (
       <Section title={d.games.title} lead={d.games.intro}>
         <div className="grid max-w-4xl gap-5 md:grid-cols-2">
-          <SignUpForm locale={locale} d={d} redirectTo={`/${locale}/games`} />
-          <SignInForm locale={locale} d={d} redirectTo={`/${locale}/games`} />
+          <SignUpForm d={d} redirectTo="/games" />
+          <SignInForm d={d} redirectTo="/games" />
         </div>
       </Section>
     );
   }
 
-  const [board, schedule] = await Promise.all([getLeaderboard(), getGameSchedule(locale)]);
+  const [board, schedule] = await Promise.all([getLeaderboard(), getGameSchedule()]);
   const yourRow = board.find((row) => row.teamId === team.teamId);
 
   return (
@@ -69,8 +57,7 @@ export default async function GamesPage({ params }: { params: Promise<{ locale: 
         </div>
         <div className="ml-auto flex items-center gap-3">
           <form action={signOutAction}>
-            <input type="hidden" name="locale" value={locale} />
-            <input type="hidden" name="next" value={`/${locale}/games`} />
+            <input type="hidden" name="next" value="/games" />
             <Button type="submit" variant="ghost" className="px-3 py-1.5 text-sm">
               {d.team.logOutButton}
             </Button>

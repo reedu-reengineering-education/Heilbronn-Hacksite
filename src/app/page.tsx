@@ -1,13 +1,8 @@
-import { event, schedule } from "@/content/event";
-import { getDictionary } from "@/i18n";
-import { isLocale, type Locale } from "@/i18n/config";
+import { event } from "@/content/event";
+import { dictionary as d } from "@/i18n";
 import { AccordionItem, ButtonLink, Card, Section } from "@/components/ui";
 
-export default async function HomePage({ params }: { params: Promise<{ locale: string }> }) {
-  const { locale: raw } = await params;
-  const locale = (isLocale(raw) ? raw : "de") as Locale;
-  const d = getDictionary(locale);
-
+export default function HomePage() {
   return (
     <>
       {/* ------------------------------------------------------------ hero */}
@@ -19,19 +14,19 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
                 {d.home.heroKicker}
               </p>
               <h1 className="mt-4 max-w-3xl text-4xl font-bold tracking-tight text-ink sm:text-6xl">
-                {event.name[locale]}
+                {event.name}
               </h1>
 
               <dl className="mt-10 flex flex-wrap gap-x-12 gap-y-4">
                 <div>
                   <dt className="text-sm font-medium text-ink-muted">{d.home.whenTitle}</dt>
                   <dd className="mt-1 text-lg font-semibold text-ink">
-                    <time dateTime={event.startIso}>{event.dates[locale]}</time>
+                    <time dateTime={event.startIso}>{event.dates}</time>
                   </dd>
                 </div>
                 <div>
                   <dt className="text-sm font-medium text-ink-muted">{d.home.whereTitle}</dt>
-                  <dd className="mt-1 text-lg font-semibold text-ink">{event.venue.name[locale]}</dd>
+                  <dd className="mt-1 text-lg font-semibold text-ink">{event.venue.name}</dd>
                 </div>
               </dl>
             </div>
@@ -50,7 +45,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
 
       {/* ------------------------------------------------------------ what */}
       <Section title={d.home.whatTitle}>
-        <p className="text-lg leading-relaxed text-ink-muted">{event.about[locale]}</p>
+        <p className="text-lg leading-relaxed text-ink-muted">{event.about}</p>
         <br />
         <div>
           <AccordionItem title={d.home.expectTitle}>

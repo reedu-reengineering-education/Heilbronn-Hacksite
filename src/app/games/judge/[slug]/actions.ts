@@ -46,7 +46,7 @@ export async function submitEntryAction(
       set: { body, ...(imagePath ? { imagePath } : {}) },
     });
 
-  revalidatePath(`/[locale]/games/judge/${slug}`, "page");
+  revalidatePath(`/games/judge/${slug}`, "page");
   return { error: null, ok: true };
 }
 
@@ -80,7 +80,7 @@ export async function voteAction(formData: FormData): Promise<void> {
     .values({ challengeId: challenge.id, submissionId, voterTeamId: team.teamId })
     .onConflictDoNothing();
 
-  revalidatePath(`/[locale]/games/judge/${slug}`, "page");
+  revalidatePath(`/games/judge/${slug}`, "page");
 }
 
 /** Take a vote back, so a team can redistribute before the phase closes. */
@@ -99,5 +99,5 @@ export async function unvoteAction(formData: FormData): Promise<void> {
     .delete(votes)
     .where(and(eq(votes.submissionId, submissionId), eq(votes.voterTeamId, team.teamId)));
 
-  revalidatePath(`/[locale]/games/judge/${slug}`, "page");
+  revalidatePath(`/games/judge/${slug}`, "page");
 }

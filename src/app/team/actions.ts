@@ -13,7 +13,6 @@ import {
   verifyPassphrase,
 } from "@/lib/auth";
 import { clearTeamSession, setTeamSession } from "@/lib/session";
-import { isLocale } from "@/i18n/config";
 
 /**
  * Sign-up and sign-in for teams. Errors are returned as dictionary keys so the
@@ -22,22 +21,17 @@ import { isLocale } from "@/i18n/config";
 
 export type TeamFormState = { error: string | null };
 
-function locale(formData: FormData): string {
-  const value = String(formData.get("locale") ?? "de");
-  return isLocale(value) ? value : "de";
-}
-
 /**
  * These forms are embedded on more than one page (the team dashboard and the
  * games page prompt), so where they send you back to is a hidden `next`
- * field rather than a hard-coded path. Only ever redirects within the current
- * locale's section of the site.
+ * field rather than a hard-coded path.
  */
 function redirectTarget(formData: FormData): string {
-  const loc = locale(formData);
   const next = String(formData.get("next") ?? "");
-  if (next === `/${loc}` || next.startsWith(`/${loc}/`)) return next;
-  return `/${loc}/team`;
+  // Only ever redirect within this site — guards against an open redirect via
+  // a crafted `next` value (e.g. a protocol-relative "//evil.example").
+  if (next.startsWith("/") && !next.startsWith("//")) return next;
+  return "/team";
 }
 
 export async function signUpAction(

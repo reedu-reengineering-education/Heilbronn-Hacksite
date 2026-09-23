@@ -2,8 +2,7 @@ import Link from "next/link";
 import { asc, desc, eq, sql } from "drizzle-orm";
 import { db } from "@/lib/db";
 import { challenges, embeds, liveSessions, questions, quizzes, submissions, teams } from "@/lib/db/schema";
-import { getDictionary } from "@/i18n";
-import { isLocale, type Locale } from "@/i18n/config";
+import { dictionary as d } from "@/i18n";
 import { isAdmin } from "@/lib/session";
 import { challengeStage, embedStage, ensureChallengeAwarded } from "@/lib/schedule";
 import { Badge, Button, Card, Field, Input, Section } from "@/components/ui";
@@ -12,15 +11,11 @@ import { adminLogoutAction, awardPointsAction, startSessionAction } from "./acti
 
 export const dynamic = "force-dynamic";
 
-export default async function AdminPage({ params }: { params: Promise<{ locale: string }> }) {
-  const { locale: raw } = await params;
-  const locale = (isLocale(raw) ? raw : "de") as Locale;
-  const d = getDictionary(locale);
-
+export default async function AdminPage() {
   if (!(await isAdmin())) {
     return (
       <Section title={d.admin.title}>
-        <AdminLogin locale={locale} d={d} />
+        <AdminLogin d={d} />
       </Section>
     );
   }
@@ -65,7 +60,7 @@ export default async function AdminPage({ params }: { params: Promise<{ locale: 
       .map((c) => ensureChallengeAwarded(c)),
   );
 
-  const formatDate = new Intl.DateTimeFormat(locale === "de" ? "de-DE" : "en-GB", {
+  const formatDate = new Intl.DateTimeFormat("en-GB", {
     day: "2-digit",
     month: "2-digit",
     hour: "2-digit",
@@ -84,7 +79,6 @@ export default async function AdminPage({ params }: { params: Promise<{ locale: 
   return (
     <Section title={d.admin.title}>
       <form action={adminLogoutAction} className="mb-8">
-        <input type="hidden" name="locale" value={locale} />
         <Button type="submit" variant="ghost">
           {d.admin.logOut}
         </Button>
@@ -104,7 +98,6 @@ export default async function AdminPage({ params }: { params: Promise<{ locale: 
                   </span>
                 </span>
                 <form action={startSessionAction} className="flex flex-wrap items-end gap-2">
-                  <input type="hidden" name="locale" value={locale} />
                   <input type="hidden" name="quizId" value={quiz.id} />
                   <Field label={d.admin.scheduledAt}>
                     <Input
@@ -148,7 +141,7 @@ export default async function AdminPage({ params }: { params: Promise<{ locale: 
                     ) : null}
                     {session.status !== "ended" ? (
                       <Link
-                        href={`/${locale}/admin/live/${session.code}`}
+                        href={`/admin/live/${session.code}`}
                         className="ml-auto text-sm font-medium text-brand-strong hover:underline"
                       >
                         {d.admin.hostConsole} →
@@ -171,7 +164,7 @@ export default async function AdminPage({ params }: { params: Promise<{ locale: 
                 <li key={challenge.id} className="flex flex-wrap items-center gap-3 py-3">
                   <span className="flex-1">
                     <Link
-                      href={`/${locale}/games/judge/${challenge.slug}`}
+                      href={`/games/judge/${challenge.slug}`}
                       className="font-medium text-ink hover:underline"
                     >
                       {challenge.title}
@@ -209,7 +202,7 @@ export default async function AdminPage({ params }: { params: Promise<{ locale: 
               return (
                 <li key={embed.id} className="flex flex-wrap items-center gap-3 py-3">
                   <Link
-                    href={`/${locale}/games/play/${embed.slug}`}
+                    href={`/games/play/${embed.slug}`}
                     className="flex-1 font-medium text-ink hover:underline"
                   >
                     {embed.title}

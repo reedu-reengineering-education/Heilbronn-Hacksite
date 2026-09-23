@@ -1,6 +1,9 @@
-import type { Dictionary } from "./de";
-
-const en: Dictionary = {
+/**
+ * English strings. This is the site's only language: `Dictionary` is derived
+ * from this object's shape, so adding a key here is all that's needed to make
+ * it available to components.
+ */
+const en = {
   meta: {
     title: "Green City Hackathon",
     description: "Data for the Heilbronn of Tomorrow",
@@ -197,3 +200,4 @@ const en: Dictionary = {
 };
 
 export default en;
+export type Dictionary = typeof en;

@@ -3,8 +3,7 @@ import { notFound } from "next/navigation";
 import { and, eq, sql } from "drizzle-orm";
 import { db } from "@/lib/db";
 import { challenges, submissions, teams, votes } from "@/lib/db/schema";
-import { getDictionary, t } from "@/i18n";
-import { isLocale, type Locale } from "@/i18n/config";
+import { dictionary as d, t } from "@/i18n";
 import { getTeamSession } from "@/lib/session";
 import { challengeStage } from "@/lib/schedule";
 import { Badge, Button, Card, EmptyState, Notice, Section } from "@/components/ui";
@@ -17,11 +16,9 @@ export const dynamic = "force-dynamic";
 export default async function JudgePage({
   params,
 }: {
-  params: Promise<{ locale: string; slug: string }>;
+  params: Promise<{ slug: string }>;
 }) {
-  const { locale: raw, slug } = await params;
-  const locale = (isLocale(raw) ? raw : "de") as Locale;
-  const d = getDictionary(locale);
+  const { slug } = await params;
 
   const [challenge] = await db.select().from(challenges).where(eq(challenges.slug, slug)).limit(1);
   if (!challenge) notFound();
@@ -87,7 +84,7 @@ export default async function JudgePage({
         <div className="mt-6 max-w-2xl">
           <Notice>
             {d.games.needTeam}{" "}
-            <Link href={`/${locale}/team`} className="font-semibold underline">
+            <Link href="/team" className="font-semibold underline">
               {d.games.needTeamCta}
             </Link>
           </Notice>

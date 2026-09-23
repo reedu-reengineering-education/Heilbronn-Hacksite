@@ -1,10 +1,9 @@
 import Link from "next/link";
 import { event } from "@/content/event";
 import type { Dictionary } from "@/i18n";
-import type { Locale } from "@/i18n/config";
 import { Logo } from "./Logo";
 
-export function SiteFooter({ locale, d }: { locale: Locale; d: Dictionary }) {
+export function SiteFooter({ d }: { d: Dictionary }) {
   const year = new Date().getFullYear();
 
   return (
@@ -14,15 +13,15 @@ export function SiteFooter({ locale, d }: { locale: Locale; d: Dictionary }) {
           <div className="max-w-sm">
             <div className="flex items-center gap-2.5">
               <Logo className="h-7 w-7" />
-              <span className="font-semibold text-ink">{event.name[locale]}</span>
+              <span className="font-semibold text-ink">{event.name}</span>
             </div>
           </div>
 
           <nav aria-label="Footer" className="grid grid-cols-2 gap-x-10 gap-y-2 text-sm sm:flex sm:flex-col">
-            <Link href={`/${locale}/info`} className="text-ink-muted hover:text-ink">
+            <Link href="/info" className="text-ink-muted hover:text-ink">
               {d.nav.info}
             </Link>
-            <Link href={`/${locale}/resources`} className="text-ink-muted hover:text-ink">
+            <Link href="/resources" className="text-ink-muted hover:text-ink">
               {d.nav.resources}
             </Link>
             <a href={`mailto:${event.contact.email}`} className="text-ink-muted hover:text-ink">

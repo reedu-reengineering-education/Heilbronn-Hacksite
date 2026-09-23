@@ -9,14 +9,8 @@ import { liveSessions, submissions } from "@/lib/db/schema";
 import { clearAdminSession, isAdmin, setAdminSession } from "@/lib/session";
 import { generateCode } from "@/lib/live/engine";
 import { award } from "@/lib/scores";
-import { isLocale } from "@/i18n/config";
 
 export type AdminState = { error: string | null };
-
-function locale(formData: FormData): string {
-  const value = String(formData.get("locale") ?? "de");
-  return isLocale(value) ? value : "de";
-}
 
 async function requireAdmin(): Promise<void> {
   if (!(await isAdmin())) throw new Error("Not authorised");
@@ -39,13 +33,13 @@ export async function adminLoginAction(
 
   await setAdminSession();
   revalidatePath("/", "layout");
-  redirect(`/${locale(formData)}/admin`);
+  redirect("/admin");
 }
 
-export async function adminLogoutAction(formData: FormData): Promise<void> {
+export async function adminLogoutAction(): Promise<void> {
   await clearAdminSession();
   revalidatePath("/", "layout");
-  redirect(`/${locale(formData)}/admin`);
+  redirect("/admin");
 }
 
 /* ------------------------------------------------------------ live quiz */
@@ -80,7 +74,7 @@ export async function startSessionAction(formData: FormData): Promise<void> {
   }
 
   await db.insert(liveSessions).values({ code, quizId, status: "lobby", scheduledAt });
-  redirect(`/${locale(formData)}/admin/live/${code}`);
+  redirect(`/admin/live/${code}`);
 }
 
 /* --------------------------------------------------------- manual points */

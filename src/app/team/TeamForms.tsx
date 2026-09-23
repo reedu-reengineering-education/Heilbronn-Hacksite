@@ -3,7 +3,6 @@
 import { useActionState } from "react";
 import { useFormStatus } from "react-dom";
 import type { Dictionary } from "@/i18n";
-import type { Locale } from "@/i18n/config";
 import { Button, Card, Field, Input, Notice } from "@/components/ui";
 import { signInAction, signUpAction, type TeamFormState } from "./actions";
 
@@ -27,11 +26,9 @@ function errorText(d: Dictionary, key: string | null): string | null {
 }
 
 export function SignUpForm({
-  locale,
   d,
   redirectTo,
 }: {
-  locale: Locale;
   d: Dictionary;
   /** Where to send the team once sign-up succeeds; defaults to the team dashboard. */
   redirectTo?: string;
@@ -45,8 +42,7 @@ export function SignUpForm({
       <p className="mt-2 text-sm text-ink-muted">{d.team.signUpIntro}</p>
 
       <form action={action} className="mt-5 space-y-4">
-        <input type="hidden" name="locale" value={locale} />
-        <input type="hidden" name="next" value={redirectTo ?? `/${locale}/team`} />
+        <input type="hidden" name="next" value={redirectTo ?? "/team"} />
 
         <Field label={d.team.nameLabel}>
           <Input name="name" required minLength={2} maxLength={40} autoComplete="off" />
@@ -90,11 +86,9 @@ export function SignUpForm({
 }
 
 export function SignInForm({
-  locale,
   d,
   redirectTo,
 }: {
-  locale: Locale;
   d: Dictionary;
   /** Where to send the team once sign-in succeeds; defaults to the team dashboard. */
   redirectTo?: string;
@@ -108,8 +102,7 @@ export function SignInForm({
       <p className="mt-2 text-sm text-ink-muted">{d.team.logInIntro}</p>
 
       <form action={action} className="mt-5 space-y-4">
-        <input type="hidden" name="locale" value={locale} />
-        <input type="hidden" name="next" value={redirectTo ?? `/${locale}/team`} />
+        <input type="hidden" name="next" value={redirectTo ?? "/team"} />
 
         <Field label={d.team.nameLabel}>
           <Input name="name" required autoComplete="off" />

@@ -2,7 +2,6 @@ import { eq, ne, sql } from "drizzle-orm";
 import { db } from "./db";
 import { challenges, embeds, liveSessions, quizzes, submissions, votes } from "./db/schema";
 import { award } from "./scores";
-import type { Locale } from "@/i18n/config";
 
 /**
  * Turns the raw schedule columns on `challenges` and `embeds` into "what's
@@ -105,7 +104,7 @@ export type GameSchedule = {
  * window just closed, so points show up without anyone having to click a
  * "close" button.
  */
-export async function getGameSchedule(locale: Locale): Promise<GameSchedule> {
+export async function getGameSchedule(): Promise<GameSchedule> {
   const now = new Date();
 
   const [sessions, challengeRows, embedRows] = await Promise.all([
@@ -128,7 +127,7 @@ export async function getGameSchedule(locale: Locale): Promise<GameSchedule> {
   const justClosed: typeof challengeRows = [];
 
   for (const session of sessions) {
-    const href = `/${locale}/games/live/${session.code}`;
+    const href = `/games/live/${session.code}`;
     const isDue = session.status === "running" || !session.scheduledAt || session.scheduledAt <= now;
     const item: ScheduleItem = {
       kind: "quiz",
@@ -141,7 +140,7 @@ export async function getGameSchedule(locale: Locale): Promise<GameSchedule> {
   }
 
   for (const challenge of challengeRows) {
-    const href = `/${locale}/games/judge/${challenge.slug}`;
+    const href = `/games/judge/${challenge.slug}`;
     switch (challengeStage(challenge, now)) {
       case "submit":
         liveNow.push({
@@ -186,7 +185,7 @@ export async function getGameSchedule(locale: Locale): Promise<GameSchedule> {
   }
 
   for (const embed of embedRows) {
-    const href = `/${locale}/games/play/${embed.slug}`;
+    const href = `/games/play/${embed.slug}`;
     const item: ScheduleItem = {
       kind: "embed",
       title: embed.title,
