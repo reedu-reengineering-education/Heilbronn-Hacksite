@@ -11,61 +11,42 @@
  */
 
 @theme {
-  /* Brand — #007448 (forest green). */
-  --color-brand: oklch(0.47 0.11 160);
-  --color-brand-strong: oklch(0.38 0.1 160);
-  --color-brand-soft: oklch(0.95 0.025 160);
-  --color-accent: oklch(0.78 0.15 75);
+  /* Page background — #070A2B (deep navy) matched exactly to the logo
+     artwork so it tiles seamlessly. Accent — #DBFF09 (lime); it, not the
+     brand tone, carries the primary CTAs; the brand shades are darker/softer
+     variants of the accent hue. */
+  --color-brand: oklch(0.941 0.221 119.6);
+  --color-brand-strong: oklch(0.85 0.19 119.6);
+  --color-brand-soft: oklch(0.3 0.06 119.6);
+  --color-accent: oklch(0.941 0.221 119.6);
 
   /* Surfaces and text — tinted toward the brand hue. */
-  --color-surface: oklch(1 0 0);
-  --color-surface-muted: oklch(0.975 0.006 160);
-  --color-surface-sunken: oklch(0.945 0.01 160);
-  --color-line: oklch(0.9 0.012 160);
-  --color-ink: oklch(0.22 0.02 160);
-  --color-ink-muted: oklch(0.52 0.015 160);
+  --color-surface: #070a2b;
+  --color-surface-muted: oklch(0.23 0.03 272.6);
+  --color-surface-sunken: oklch(0.14 0.03 272.6);
+  --color-line: oklch(0.32 0.03 272.6);
+  --color-ink: oklch(0.97 0.004 272.6);
+  --color-ink-muted: oklch(0.68 0.025 272.6);
 
   /* Feedback. Positive is a distinct, warmer green so it doesn't read as a brand button. */
   --color-positive: oklch(0.64 0.15 142);
   --color-negative: oklch(0.6 0.19 25);
 
-  /* Type. Swap the family once the brand font is decided. */
-  --font-sans: var(--font-inter), ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  /* Type. Mono carries the terminal/poster aesthetic (headings, labels, UI
+     chrome); the grotesk face is reserved for long-form body copy. */
+  --font-sans: var(--font-space-grotesk), ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: var(--font-ibm-plex-mono), ui-monospace, "SFMono-Regular", Menlo, monospace;
 
   --radius-card: 0.875rem;
-}
 
-/* Dark mode mirrors the same token names, so components stay theme-agnostic. */
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    --color-surface: oklch(0.19 0.015 160);
-    --color-surface-muted: oklch(0.23 0.018 160);
-    --color-surface-sunken: oklch(0.16 0.015 160);
-    --color-line: oklch(0.32 0.02 160);
-    --color-ink: oklch(0.96 0.005 160);
-    --color-ink-muted: oklch(0.72 0.015 160);
-    --color-brand: oklch(0.72 0.14 160);
-    --color-brand-strong: oklch(0.82 0.11 160);
-    --color-brand-soft: oklch(0.28 0.05 160);
-  }
-}
-
-:root[data-theme="dark"] {
-  --color-surface: oklch(0.19 0.015 160);
-  --color-surface-muted: oklch(0.23 0.018 160);
-  --color-surface-sunken: oklch(0.16 0.015 160);
-  --color-line: oklch(0.32 0.02 160);
-  --color-ink: oklch(0.96 0.005 160);
-  --color-ink-muted: oklch(0.72 0.015 160);
-  --color-brand: oklch(0.72 0.14 160);
-  --color-brand-strong: oklch(0.82 0.11 160);
-  --color-brand-soft: oklch(0.28 0.05 160);
+  /* A black shadow vanishes on the navy page, so cards get a soft lime glow. */
+  --shadow-card: 0 10px 30px -6px oklch(0.941 0.221 119.6 / 0.28);
 }
 
 /* --------------------------------------------------------------- base --- */
 
 html {
-  color-scheme: light dark;
+  color-scheme: dark;
 }
 
 body {
@@ -76,7 +57,7 @@ body {
 
 /* Visible focus everywhere; a beamer-lit room is a bad place for subtle. */
 :where(a, button, input, select, textarea, [tabindex]):focus-visible {
-  outline: 2px solid var(--color-brand);
+  outline: 2px solid var(--color-accent);
   outline-offset: 2px;
   border-radius: 0.25rem;
 }
@@ -104,4 +85,161 @@ body {
   .container-page {
     padding-inline: 1.5rem;
   }
+}
+
+/* --------------------------------------------------------- topic rings --- */
+
+/*
+ * Olympic-style layout. Desktop: four rings on top, three below, each shifted
+ * half a step. Mobile: a zigzag column so the labels stay readable.
+ * --d is the ring diameter as a share of the container width.
+ */
+.topic-rings {
+  --cols: 3.55; /* container width in ring diameters */
+  --rows: 1.75; /* container height in ring diameters */
+  position: relative;
+  margin-inline: auto;
+  max-width: 60rem;
+  aspect-ratio: var(--cols) / var(--rows);
+  list-style: none;
+}
+
+.topic-ring {
+  --step: 0.85;
+  position: absolute;
+  width: calc(100% / var(--cols));
+  aspect-ratio: 1;
+  /* i 0-3: top row at 0..3 steps; i 4-6: bottom row at 0.5..2.5 steps */
+  left: calc(var(--x) * var(--step) * 100% / var(--cols));
+  top: calc(var(--y) * 0.75 / var(--rows) * 100%);
+  z-index: 1;
+}
+.topic-ring[data-flipped="true"] {
+  z-index: 10;
+}
+.topic-ring:nth-child(1) { --x: 0;   --y: 0; }
+.topic-ring:nth-child(2) { --x: 1;   --y: 0; }
+.topic-ring:nth-child(3) { --x: 2;   --y: 0; }
+.topic-ring:nth-child(4) { --x: 3;   --y: 0; }
+.topic-ring:nth-child(5) { --x: 0.5; --y: 1; }
+.topic-ring:nth-child(6) { --x: 1.5; --y: 1; }
+.topic-ring:nth-child(7) { --x: 2.5; --y: 1; }
+
+@media (max-width: 639px) {
+  .topic-rings {
+    --cols: 1.6;
+    --rows: 5.5;
+    max-width: 22rem;
+  }
+  .topic-ring:nth-child(odd)  { left: 0; }
+  .topic-ring:nth-child(even) { left: calc(0.6 * 100% / var(--cols)); }
+  .topic-ring:nth-child(1) { top: calc(0 * 0.75 / var(--rows) * 100%); }
+  .topic-ring:nth-child(2) { top: calc(1 * 0.75 / var(--rows) * 100%); }
+  .topic-ring:nth-child(3) { top: calc(2 * 0.75 / var(--rows) * 100%); }
+  .topic-ring:nth-child(4) { top: calc(3 * 0.75 / var(--rows) * 100%); }
+  .topic-ring:nth-child(5) { top: calc(4 * 0.75 / var(--rows) * 100%); }
+  .topic-ring:nth-child(6) { top: calc(5 * 0.75 / var(--rows) * 100%); }
+  .topic-ring:nth-child(7) { top: calc(6 * 0.75 / var(--rows) * 100%); }
+}
+
+.topic-ring__button {
+  display: block;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  border: 0;
+  background: none;
+  border-radius: 50%;
+  cursor: pointer;
+  perspective: 900px;
+  color: inherit;
+}
+
+.topic-ring__inner {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.7s cubic-bezier(0.4, 0.2, 0.2, 1);
+}
+.topic-ring[data-flipped="true"] .topic-ring__inner {
+  transform: rotateY(180deg);
+}
+.topic-ring__button:hover .topic-ring__inner {
+  transform: scale(1.03);
+}
+.topic-ring[data-flipped="true"] .topic-ring__button:hover .topic-ring__inner {
+  transform: rotateY(180deg) scale(1.03);
+}
+
+.topic-ring__face {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.topic-ring__svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  animation: topic-ring-spin var(--spin) linear infinite;
+  animation-direction: var(--dir);
+}
+/* Three arcs with gaps: circumference 2*pi*45 = 282.7 */
+.topic-ring__svg circle {
+  fill: none;
+  stroke: var(--ring);
+  stroke-width: 7;
+  stroke-dasharray: 78 16.2;
+}
+
+.topic-ring__label {
+  position: relative;
+  max-width: 62%;
+  text-align: center;
+  font-family: var(--font-mono);
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--color-ink);
+  font-size: clamp(0.8rem, 2vw, 1.15rem);
+  hyphens: auto;
+}
+
+.topic-ring__back {
+  transform: rotateY(180deg);
+  gap: 0.4rem;
+  padding: 14%;
+  text-align: center;
+  background: var(--color-surface-muted);
+  border: 4px solid var(--ring);
+}
+.topic-ring__title {
+  font-family: var(--font-mono);
+  font-weight: 600;
+  text-transform: uppercase;
+  color: var(--ring);
+  font-size: clamp(0.65rem, 1.4vw, 0.85rem);
+}
+.topic-ring__text {
+  color: var(--color-ink);
+  line-height: 1.35;
+  font-size: clamp(0.65rem, 1.35vw, 0.8rem);
+}
+@media (max-width: 639px) {
+  .topic-ring__label { font-size: 1.05rem; }
+  .topic-ring__title { font-size: 0.8rem; }
+  .topic-ring__text { font-size: 0.78rem; }
+}
+
+@keyframes topic-ring-spin {
+  to { transform: rotate(360deg); }
 }

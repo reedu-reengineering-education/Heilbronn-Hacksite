@@ -7,6 +7,12 @@ import postgres from "postgres";
  * needs a manual migration step.
  */
 
+// Next.js loads .env for the app, but plain scripts don't. Docker has no .env
+// file (the variables come from the environment), so a missing file is fine.
+try {
+  process.loadEnvFile();
+} catch {}
+
 const url = process.env.DATABASE_URL;
 if (!url) {
   console.error("DATABASE_URL is not set.");

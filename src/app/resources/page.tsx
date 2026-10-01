@@ -1,9 +1,21 @@
 import type { Metadata } from "next";
 import { furtherReading, hardware, software, type ResourceItem } from "@/content/resources";
+import { dataSources } from "@/content/data";
 import { dictionary as d } from "@/i18n";
-import { Badge, Card, Section } from "@/components/ui";
+import { Card, Badge, Section } from "@/components/ui";
+import { DataCard } from "@/components/DataCard";
 
 export const metadata: Metadata = { title: d.resources.title };
+
+function DataGrid() {
+  return (
+    <ul className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+      {dataSources.map((item) => (
+        <DataCard key={item.name} item={item} />
+      ))}
+    </ul>
+  );
+}
 
 function ResourceGrid({ items }: { items: ResourceItem[] }) {
   return (
@@ -42,11 +54,15 @@ function ResourceGrid({ items }: { items: ResourceItem[] }) {
 export default function ResourcesPage() {
   return (
     <>
-      <Section title={d.resources.hardwareTitle} className="pt-0">
+      <Section title={d.resources.dataTitle} className="pt-0">
+        <DataGrid />
+      </Section>
+
+      <Section title={d.resources.hardwareTitle}>
         <ResourceGrid items={hardware} />
       </Section>
 
-      <Section title={d.resources.softwareTitle} className="bg-surface-sunken">
+      <Section title={d.resources.softwareTitle}>
         <ResourceGrid items={software} />
       </Section>
 

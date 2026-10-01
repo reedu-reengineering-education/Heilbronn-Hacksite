@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-label="Placeholder image for Open data sources">
+  <rect width="800" height="450" fill="#e6f2ea"/>
+  <g fill="none" stroke="#2f6b4f" stroke-width="10" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="400" cy="220" r="90"/>
+    <ellipse cx="400" cy="220" rx="90" ry="35"/>
+    <path d="M310 220 L490 220 M400 130 L400 310"/>
+  </g>
+  <text x="400" y="390" text-anchor="middle" font-family="system-ui, sans-serif" font-size="26" fill="#2f6b4f">Open data sources</text>
+  <text x="400" y="420" text-anchor="middle" font-family="system-ui, sans-serif" font-size="16" fill="#5c8a72">Replace this placeholder — public/data/open-data-sources.svg</text>
+</svg>

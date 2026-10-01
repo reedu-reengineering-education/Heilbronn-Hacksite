@@ -52,3 +52,30 @@ export function validatePassphrase(passphrase: string): string | null {
   if (passphrase.length > 200) return "tooLong";
   return null;
 }
+
+export const MAX_IDEA_LENGTH = 2000;
+export const MAX_MEMBERS = 6;
+export const MAX_MEMBER_NAME_LENGTH = 60;
+
+/** One member per line; blank lines and duplicates are dropped. */
+export function parseMembers(raw: string): string[] {
+  const seen = new Set<string>();
+  const members: string[] = [];
+  for (const line of raw.split(/\r?\n/)) {
+    const name = line.trim().replace(/\s+/g, " ").slice(0, MAX_MEMBER_NAME_LENGTH);
+    const key = name.toLowerCase();
+    if (!name || seen.has(key)) continue;
+    seen.add(key);
+    members.push(name);
+  }
+  return members;
+}
+
+/** Constant-time comparison against the organiser passphrase from the environment. */
+export function isAdminPassphrase(given: string): boolean {
+  const expected = process.env.ADMIN_PASSPHRASE ?? "";
+  if (!expected) return false;
+  const a = Buffer.from(given);
+  const b = Buffer.from(expected);
+  return a.length === b.length && timingSafeEqual(a, b);
+}

@@ -37,7 +37,7 @@ export function MobileNav({
       </button>
 
       {open ? (
-        <div className="absolute inset-x-0 top-16 border-b border-line bg-surface shadow-lg">
+        <div className="absolute inset-x-0 top-20 border-b border-line bg-surface shadow-lg">
           <nav className="container-page flex flex-col py-3" aria-label="Main">
             {items.map((item) => (
               <Link

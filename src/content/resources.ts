@@ -70,18 +70,6 @@ export const software: ResourceItem[] = [
       { label: docs("Overpass Turbo"), url: "https://overpass-turbo.eu/" },
     ],
   },
-  {
-    name: docs("Open data sources"),
-    summary: docs(
-      "Weather, transport, public administration — good starting points for data projects.",
-    ),
-    badge: docs("Data"),
-    links: [
-      { label: docs("GovData"), url: "https://www.govdata.de/" },
-      { label: docs("DWD Open Data"), url: "https://opendata.dwd.de/" },
-      { label: docs("Open-Meteo"), url: "https://open-meteo.com/" },
-    ],
-  },
 ];
 
 /** A flat list of "read this if you have ten minutes" links. */

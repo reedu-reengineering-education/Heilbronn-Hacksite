@@ -1,8 +1,7 @@
 # syntax=docker/dockerfile:1
 
-# Build and runtime in one image. The custom server (server/index.ts) runs the
-# Next app and the WebSocket endpoint together, so this is a plain Node image
-# rather than a Next standalone bundle.
+# Build and runtime in one image: a plain Node image running `next start`,
+# rather than a Next standalone bundle, so the migration script can run too.
 
 FROM node:24-alpine AS deps
 WORKDIR /app
@@ -25,7 +24,6 @@ WORKDIR /app
 ENV NODE_ENV=production
 ENV NEXT_TELEMETRY_DISABLED=1
 ENV PORT=3000
-ENV UPLOAD_DIR=/app/uploads
 
 RUN addgroup -g 1001 -S nodejs && adduser -S -u 1001 -G nodejs nextjs
 
@@ -36,11 +34,10 @@ COPY --from=build /app/package.json ./package.json
 COPY --from=build /app/next.config.ts ./next.config.ts
 COPY --from=build /app/tsconfig.json ./tsconfig.json
 COPY --from=build /app/drizzle ./drizzle
-COPY --from=build /app/server ./server
 COPY --from=build /app/scripts ./scripts
 COPY --from=build /app/src ./src
 
-RUN mkdir -p /app/uploads && chown -R nextjs:nodejs /app/uploads /app/.next
+RUN chown -R nextjs:nodejs /app/.next
 
 USER nextjs
 EXPOSE 3000

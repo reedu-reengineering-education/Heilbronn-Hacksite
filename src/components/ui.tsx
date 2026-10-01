@@ -12,6 +12,29 @@ export function cx(...parts: Array<string | false | null | undefined>): string {
 
 /* ------------------------------------------------------------- structure */
 
+/** `{ ` / ` }` (or `[ ` / ` ]`), framing a short label. Brace color defaults
+ * to the accent lime — pass `braceClassName` to mute it (e.g. a footer tagline). */
+export function Bracket({
+  children,
+  kind = "brace",
+  className,
+  braceClassName = "text-accent",
+}: {
+  children: ReactNode;
+  kind?: "brace" | "square";
+  className?: string;
+  braceClassName?: string;
+}) {
+  const [open, close] = kind === "brace" ? ["{", "}"] : ["[", "]"];
+  return (
+    <span className={cx("font-mono", className)}>
+      <span className={braceClassName}>{open} </span>
+      {children}
+      <span className={braceClassName}> {close}</span>
+    </span>
+  );
+}
+
 export function Section({
   title,
   lead,
@@ -29,14 +52,21 @@ export function Section({
     <section id={id} className={cx("py-12 sm:py-16", className)}>
       <div className="container-page">
         {title ? (
-          <h2 className="text-2xl font-semibold tracking-tight text-ink sm:text-3xl">{title}</h2>
+          <h2 className="font-mono text-2xl font-semibold uppercase tracking-tight text-ink sm:text-3xl">
+            <span className="text-accent">/ </span>
+            {title}
+          </h2>
         ) : null}
-        {lead ? <p className="mt-3 max-w-2xl text-ink-muted">{lead}</p> : null}
+        {lead ? <p className="mt-3 max-w-2xl text-lg leading-relaxed text-ink-muted">{lead}</p> : null}
         {children ? <div className={title || lead ? "mt-8" : undefined}>{children}</div> : null}
       </div>
     </section>
   );
 }
+
+/** The one card look (outlined, brand border). Use `cardClass` for elements that
+ * can't be a `<Card>` (e.g. the flip faces of `DataCard`). */
+export const cardClass = "rounded-card border-4 border-brand bg-surface shadow-card";
 
 export function Card({
   children,
@@ -47,16 +77,7 @@ export function Card({
   className?: string;
   as?: "div" | "li" | "article";
 }) {
-  return (
-    <Tag
-      className={cx(
-        "rounded-card border border-line bg-surface-muted p-5 shadow-sm",
-        className,
-      )}
-    >
-      {children}
-    </Tag>
-  );
+  return <Tag className={cx(cardClass, "p-5", className)}>{children}</Tag>;
 }
 
 export function Badge({ children, tone = "neutral" }: { children: ReactNode; tone?: "neutral" | "brand" | "positive" | "negative" }) {
@@ -69,7 +90,7 @@ export function Badge({ children, tone = "neutral" }: { children: ReactNode; ton
   return (
     <span
       className={cx(
-        "inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium",
+        "inline-flex items-center rounded-full px-2.5 py-0.5 font-mono text-xs uppercase tracking-wide",
         tones[tone],
       )}
     >
@@ -81,11 +102,11 @@ export function Badge({ children, tone = "neutral" }: { children: ReactNode; ton
 /* ---------------------------------------------------------------- inputs */
 
 const buttonBase =
-  "inline-flex items-center justify-center gap-2 rounded-lg px-4 py-2.5 text-sm font-semibold transition-colors disabled:cursor-not-allowed disabled:opacity-50";
+  "inline-flex items-center justify-center gap-2 rounded-lg px-4 py-2.5 font-mono text-sm font-semibold uppercase tracking-wide transition-colors disabled:cursor-not-allowed disabled:opacity-50";
 
 const buttonVariants = {
-  primary: "bg-brand text-white hover:bg-brand-strong",
-  secondary: "border border-line bg-surface text-ink hover:bg-surface-muted",
+  primary: "bg-accent text-surface hover:bg-white",
+  secondary: "border border-line bg-surface text-ink hover:border-accent hover:text-accent",
   ghost: "text-ink-muted hover:bg-surface-muted hover:text-ink",
   danger: "bg-negative text-white hover:opacity-90",
 } as const;
@@ -180,7 +201,7 @@ export function AccordionItem({
 }) {
   return (
     <details className="border-b border-line py-4 first:pt-0 last:border-b-0">
-      <summary className="cursor-pointer select-none text-2xl font-semibold text-ink hover:text-brand-strong">
+      <summary className="cursor-pointer select-none font-mono text-xl font-semibold uppercase tracking-tight text-ink hover:text-accent sm:text-2xl">
         {title}
       </summary>
       <div className="mt-3 text-ink-muted">{children}</div>

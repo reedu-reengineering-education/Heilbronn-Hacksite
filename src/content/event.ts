@@ -59,55 +59,39 @@ export type ScheduleEntry = {
 export const schedule: ScheduleEntry[] = [
   {
     day: "Tue",
-    time: "11:00 - 11:15",
-    title: "Arrive & coffee",
-    detail: "Check-in.",
+    time: "10:30",
+    title: "Registration, Introduction & Kick-Off",
+    detail: "Check-In, opening-ceremony, who are we, what are the goals, some input from our side, presentation of the usable data ",
   },
   {
     day: "Tue",
-    time: "11:15 - 13:00",
-    title: "Kickoff & ideas",
-    detail: "Introductions, topics, forming teams.",
+    time: "14:00",
+    title: "The Hacking Begins",
+    detail: "Start brainstorming, experimenting, building, exchanging and discussing",
   },
   {
     day: "Tue",
-    time: "14:00 - 18:00",
-    title: "Hacking",
-    highlight: true,
+    time: "15:00",
+    title: "Workshops",
+    detail: "One hour after the official start of the Hackathon, we will offer a variety of optional Workshops for sport, hardware assistance, 3D-printing, guidance by mentors and much more! This will be offered on both main hacking days.",
   },
   {
     day: "Wed",
-    time: "09:00 - 09:30",
-    title: "Stand-up",
-    detail: "Presentation of the interim results.",
-  },
-  {
-    day: "Wed",
-    time: "09:30 - 18:00",
-    title: "Hacking",
-    highlight: true,
+    time: "",
+    title: "Hacking, workshops & meals",
+    detail: "A full day to build. Workshops run again, mentors are on site",
   },
   {
     day: "Thu",
-    time: "09:00 - 09:30",
-    title: "Stand-up",
-    detail: "Presentation of the interim results.",
+    time: "14:00",
+    title: "Submission & selection of the finalists",
+    detail: "Each team will pitch their project to their mentor. This will decide who gets to present their project on the big stage and a potential place on the podium",
   },
   {
     day: "Thu",
-    time: "09:30 - 15:00",
-    title: "Hacking",
-    highlight: true,
-  },
-  {
-    day: "Fri",
-    time: "15:00 - 17:00",
-    title: "Final presentations",
-  },
-  {
-    day: "Fri",
-    time: "17:00 - 18:00",
-    title: "Awards & wrap-up",
+    time: "16:00",
+    title: "Finale & award ceremony",
+    detail: "The selected finalists will pitch their project to the jury and the participants. Afterwards a jury will decide the winners who get their prizes in the following Award Ceremony.",
   },
 ];
 
@@ -129,9 +113,12 @@ export const faq: FaqEntry[] = [
     question: "How large should a team be?",
     answer: "Three to five people works best. You can also team up on the day.",
   },
-  {
-    question: "What are the points and the leaderboard about?",
-    answer:
-      "There are small games between working sessions. Points from those count for your team — purely for fun, separate from how projects are judged.",
-  },
 ];
+
+/* ---------------------------------------------------------- organisations */
+
+export const organisations = [
+  { name: "Arkadia", logo: "/organisations/arkadia.svg", link: "https://arkadia.hn/" },
+  { name: "aim", logo: "/organisations/aim.png", link: "https://www.aim-akademie.org/" },
+  { name: "re:edu", logo: "/organisations/reedu.png", link: "https://reedu.de/" },
+] as const;
