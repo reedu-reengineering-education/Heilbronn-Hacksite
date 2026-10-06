@@ -78,11 +78,13 @@ const en = {
   topics: {
     title: "Topics",
     lead: "Potential topics for your project.",
+    source:
+      "Our Hackathon is part of the initiative 'European Green Capital Heilbronn'. These topics are the core environmental areas, that a Green Capital needs to address.",
     flipHint: "Show details",
     flipBack: "Back",
     items: {
       waste: {
-        name: "Waste & Recycling",
+        name: "Waste & Circular economy",
         description:
           "Where does our waste come from, where does it go, and how can more of it be reused or avoided?",
       },
@@ -102,12 +104,12 @@ const en = {
           "Particulate matter, nitrogen oxides and pollen: what are we breathing, street by street?",
       },
       biodiversity: {
-        name: "Biodiversity",
+        name: "Biodiversity & Land use",
         description:
           "Parks, trees, insects and birds: how can we see, protect and grow nature in the city?",
       },
       protection: {
-        name: "Climate protection",
+        name: "Climate mitigation",
         description:
           "Cutting emissions from energy, mobility and buildings: what can the city and its people do?",
       },
