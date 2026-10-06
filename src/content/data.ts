@@ -117,8 +117,8 @@ export const dataSources: DataSource[] = [
     docs: [],
   },
   {
-    name: "Open data sources",
-    image: "/data/open-data-sources.svg",
+    name: "and more!",
+    image: "/resources/more.png",
     summary:
       "Public datasets that complement the sensor data above, for Heilbronn and beyond.",
     measurements: ["Weather", "Transport", "Administrative data"],
