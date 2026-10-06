@@ -111,8 +111,8 @@ export const dataSources: DataSource[] = [
     measurements: ["Temperature (in/out)", "Humidity (in/out)", "Entrance videos", "Bee activity labels"],
     endpoints: [
       // placeholders — data hosting location TBD
-      { label: "Sensor data", url: "https://example.com/smart-beehive-data", description: "Environmental data inside and outside the hive." },
-      { label: "Labelled entrance videos", url: "https://example.com/smart-beehive-videos", description: "Entrance videos with labelled bee activity." },
+      { label: "Sensor data", url: "https://beehive-grafana-production.up.railway.app/goto/XqTJWzrDR?orgId=1", description: "Environmental data inside and outside of three beehives around the OpenSpace." },
+      { label: "Labelled entrance videos", url: "https://cloud.reedu.de/s/YkHckREGAM89z9m", description: "Beehive entrance videos recorded with the senseBox MCU Eye. Potentially useful for machine learning." },
     ],
     docs: [],
   },

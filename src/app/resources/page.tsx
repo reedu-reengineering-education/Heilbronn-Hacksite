@@ -4,6 +4,7 @@ import { dataSources } from "@/content/data";
 import { dictionary as d } from "@/i18n";
 import { Card, Badge, Section } from "@/components/ui";
 import { DataCard } from "@/components/DataCard";
+import { HardwareCard } from "@/components/HardwareCard";
 
 export const metadata: Metadata = { title: d.resources.title };
 
@@ -12,6 +13,16 @@ function DataGrid() {
     <ul className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
       {dataSources.map((item) => (
         <DataCard key={item.name} item={item} />
+      ))}
+    </ul>
+  );
+}
+
+function HardwareGrid() {
+  return (
+    <ul className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+      {hardware.map((item) => (
+        <HardwareCard key={item.name} item={item} />
       ))}
     </ul>
   );
@@ -59,7 +70,7 @@ export default function ResourcesPage() {
       </Section>
 
       <Section title={d.resources.hardwareTitle}>
-        <ResourceGrid items={hardware} />
+        <HardwareGrid />
       </Section>
 
       <Section title={d.resources.softwareTitle}>
