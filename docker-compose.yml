@@ -30,25 +30,15 @@ services:
       PORT: 3000
     expose:
       - "3000"
-
-  caddy:
-    image: caddy:2-alpine
-    restart: unless-stopped
-    depends_on:
-      - app
-    ports:
-      - "80:80"
-      - "443:443"
-      - "443:443/udp"
-    environment:
-      SITE_DOMAIN: ${SITE_DOMAIN:?set SITE_DOMAIN in .env}
-      ACME_EMAIL: ${ACME_EMAIL:-}
-    volumes:
-      - ./Caddyfile:/etc/caddy/Caddyfile:ro
-      - caddy-data:/data
-      - caddy-config:/config
+    networks:
+      default:
+      proxy:
+        aliases:
+          - hacksite
 
 volumes:
   db-data:
-  caddy-data:
-  caddy-config:
+
+networks:
+  proxy:
+    external: true

@@ -1,46 +1,24 @@
 # Hackathon site
 
 Event info, reading material and a team overview where teams manage their own entry.
-Next.js 15 + Postgres, deployed with Docker Compose behind Caddy.
+Next.js 15 + Postgres, deployed with Docker Compose.
 
 ---
 
-## Deploying on the Hetzner box
+## Deployment
 
-You need Docker with the Compose plugin, and a DNS A/AAAA record pointing your
-domain at the server. Caddy gets the TLS certificate itself.
-
-```bash
-git clone <this repo> hacksite && cd hacksite
-cp .env.example .env
-```
-
-Fill in `.env`:
-
-```ini
-SITE_DOMAIN=hackathon.example.org     # must already resolve to this server
-ACME_EMAIL=you@example.org            # optional, for expiry warnings
-POSTGRES_PASSWORD=<random>
-SESSION_SECRET=<openssl rand -base64 48>
-ADMIN_PASSPHRASE=<what the organisers will type>
-```
-
-Then:
+The stack has no reverse proxy of its own. The `app` container joins an
+external Docker network `proxy` as `hacksite:3000`; put any TLS-terminating
+reverse proxy (Caddy, nginx, Traefik, …) on that network and point it there.
 
 ```bash
+docker network create proxy        # once per server
+cp .env.example .env               # set POSTGRES_PASSWORD, SESSION_SECRET, ADMIN_PASSPHRASE
 docker compose up -d --build
 ```
 
-The site is live on `https://$SITE_DOMAIN`. Database migrations run
-automatically on every container start, so deploying an update is:
-
-```bash
-git pull && docker compose up -d --build
-```
-
-Ports 80 and 443 must be free. If you already run nginx or Traefik on the host,
-drop the `caddy` service from `docker-compose.yml`, add `ports: ["127.0.0.1:3000:3000"]`
-to the `app` service, and proxy to it.
+Migrations run on every container start, so updating is
+`git pull && docker compose up -d --build`.
 
 ## Local development
 
