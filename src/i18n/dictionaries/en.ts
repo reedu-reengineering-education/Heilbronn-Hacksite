@@ -15,7 +15,7 @@ const en = {
     resources: "Material",
     mentors: "Mentors & Jury",
     teams: "Teams",
-    greenCity: "Green City",
+    background: "Background",
     skipToContent: "Skip to content",
   },
   footer: {
@@ -138,10 +138,10 @@ const en = {
     title: "Material",
     dataTitle: "Data",
     hardwareTitle: "Hardware",
-    softwareTitle: "Software & APIs",
+    softwareTitle: "Software",
     linksTitle: "Further reading",
   },
-  greenCity: {
+  background: {
     title: "Green Capital Heilbronn",
     intro: [
       "Heilbronn is the European Green Capital for 2027, and the Green City Heilbronn is part of that initiative. Together with Arkadia, aim and re:edu, we offer exciting educational and citizen science projects that everyone can join.",

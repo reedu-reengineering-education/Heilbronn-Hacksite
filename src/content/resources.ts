@@ -11,7 +11,7 @@ export type ResourceLink = {
 
 export type ResourceItem = {
   name: string;
-  /** Only needed for hardware cards. */
+  /** Shown on the front of the flip card. */
   image?: string;
   summary: string;
   /** Shown as a small badge, e.g. a quantity or a category. */
@@ -79,8 +79,9 @@ export const hardware: ResourceItem[] = [
 export const software: ResourceItem[] = [
   {
     name: "openSenseMap",
+    image: "/software/osem.png",
     summary: docs(
-      "Open platform for environmental measurements. Upload, query and visualise data.",
+      "Open platform for environmental measurements. Upload, query and visualise data.  \n Please note that the current version is approaching its end-of-life and might occasionally be slow or unresponsive. The new experimental website will eventually replace it, but so far includes only a very limited dataset.",
     ),
     badge: docs("Platform & API"),
     links: [
@@ -91,7 +92,8 @@ export const software: ResourceItem[] = [
   },
   {
     name: "Kepler.gl",
-    summary: docs("Open-source geodata visualisation tool."),
+    image: "/software/kepler-gl.png",
+    summary: docs("Open-source geodata visualisation tool. Either integrate it into your own web app, or use their hosted demo to visualise your data."),
     badge: docs("Tooling"),
     links: [
       { label: docs("Website"), url: "https://kepler.gl/" },
@@ -99,15 +101,17 @@ export const software: ResourceItem[] = [
   },
   {
     name: "Arduino IDE",
-    summary: docs("The Arduino IDE is a cross-platform application that enables users to write code and upload it to the board."),
+    image: "/software/arduino.png",
+    summary: docs("The Arduino IDE is a cross-platform application that enables users to write code and upload it to the board (e.g. to senseBox MCUs)."),
     badge: docs("Tooling"),
     links: [
       { label: docs("Website"), url: "https://www.arduino.cc/en/software" },
     ],
   },
   {
-    name: docs("Maps & geodata"),
-    summary: docs("OpenStreetMap, Leaflet and MapLibre for anything map-based."),
+    name: docs("and more!"),
+    image: "/resources/more.png",
+    summary: docs("For example use OpenStreetMap, Leaflet and MapLibre for anything map-based."),
     badge: docs("Libraries"),
     links: [
       { label: docs("Leaflet"), url: "https://leafletjs.com/" },

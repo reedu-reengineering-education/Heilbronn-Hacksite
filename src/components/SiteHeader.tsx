@@ -10,7 +10,7 @@ export function navItems(d: Dictionary) {
     { href: "/resources", label: d.nav.resources },
     { href: "/mentors-jury", label: d.nav.mentors },
     { href: "/teams", label: d.nav.teams },
-    { href: "/green-city", label: d.nav.greenCity },
+    { href: "/background", label: d.nav.background },
   ];
 }
 

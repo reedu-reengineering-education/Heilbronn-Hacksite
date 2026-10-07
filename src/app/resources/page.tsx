@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import { furtherReading, hardware, software, type ResourceItem } from "@/content/resources";
 import { dataSources } from "@/content/data";
 import { dictionary as d } from "@/i18n";
-import { Card, Badge, Section } from "@/components/ui";
+import { Section } from "@/components/ui";
 import { DataCard } from "@/components/DataCard";
-import { HardwareCard } from "@/components/HardwareCard";
+import { FlipCard } from "@/components/FlipCard";
 
 export const metadata: Metadata = { title: d.resources.title };
 
@@ -18,45 +18,11 @@ function DataGrid() {
   );
 }
 
-function HardwareGrid() {
+function FlipGrid({ items }: { items: ResourceItem[] }) {
   return (
     <ul className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-      {hardware.map((item) => (
-        <HardwareCard key={item.name} item={item} />
-      ))}
-    </ul>
-  );
-}
-
-function ResourceGrid({ items }: { items: ResourceItem[] }) {
-  return (
-    <ul className="grid gap-5 sm:grid-cols-2">
       {items.map((item) => (
-        <Card as="li" key={item.name} className="flex flex-col">
-          <div className="flex items-start justify-between gap-3">
-            <h3 className="text-lg font-semibold text-ink">{item.name}</h3>
-            {item.badge ? <Badge tone="brand">{item.badge}</Badge> : null}
-          </div>
-          <p className="mt-2 flex-1 text-sm leading-relaxed text-ink-muted">
-            {item.summary}
-          </p>
-          {item.links.length > 0 ? (
-            <ul className="mt-4 flex flex-wrap gap-x-4 gap-y-1">
-              {item.links.map((link) => (
-                <li key={link.url}>
-                  <a
-                    href={link.url}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="text-sm font-medium text-brand-strong underline-offset-4 hover:underline"
-                  >
-                    {link.label} ↗
-                  </a>
-                </li>
-              ))}
-            </ul>
-          ) : null}
-        </Card>
+        <FlipCard key={item.name} item={item} />
       ))}
     </ul>
   );
@@ -70,11 +36,11 @@ export default function ResourcesPage() {
       </Section>
 
       <Section title={d.resources.hardwareTitle}>
-        <HardwareGrid />
+        <FlipGrid items={hardware} />
       </Section>
 
       <Section title={d.resources.softwareTitle}>
-        <ResourceGrid items={software} />
+        <FlipGrid items={software} />
       </Section>
 
       <Section title={d.resources.linksTitle}>

@@ -8,7 +8,7 @@ import { Badge, cardClass } from "@/components/ui";
 const face = "col-start-1 row-start-1 flex flex-col [backface-visibility:hidden]";
 
 /** Flip card: image and name on the front, description and links on the back. */
-export function HardwareCard({ item }: { item: ResourceItem }) {
+export function FlipCard({ item }: { item: ResourceItem }) {
   const [flipped, setFlipped] = useState(false);
   const toggle = () => setFlipped((f) => !f);
   const onKeyDown = (e: React.KeyboardEvent) => {

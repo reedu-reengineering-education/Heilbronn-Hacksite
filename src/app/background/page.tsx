@@ -2,38 +2,38 @@ import type { Metadata } from "next";
 import { dictionary as d } from "@/i18n";
 import { Section } from "@/components/ui";
 
-export const metadata: Metadata = { title: d.greenCity.title };
+export const metadata: Metadata = { title: d.background.title };
 
 const DASHBOARD_URL = "https://greencity.hn/";
 
-export default function GreenCityPage() {
+export default function BackgroundPage() {
   return (
     <>
-      <Section title={d.greenCity.title}>
-        <div className="space-y-4 text-lg leading-relaxed text-ink-muted">
-          {d.greenCity.intro.map((paragraph) => (
+      <Section title={d.background.title}>
+        <div className="space-y-4 text-lg leading-relaxed">
+          {d.background.intro.map((paragraph) => (
             <p key={paragraph}>{paragraph}</p>
           ))}
         </div>
       </Section>
 
-      <Section title={d.greenCity.whatTitle}>
-        <div className="space-y-4 text-ink text-lg">
-          <p>{d.greenCity.what}</p>
+      <Section title={d.background.whatTitle}>
+        <div className="space-y-4 text-lg leading-relaxed">
+          <p>{d.background.what}</p>
           <p>
-            {d.greenCity.dashboard.before}
+            {d.background.dashboard.before}
             <a
               href={DASHBOARD_URL}
               target="_blank"
               rel="noopener noreferrer"
               className="font-semibold text-accent underline underline-offset-2 hover:text-brand"
             >
-              {d.greenCity.dashboard.link}
+              {d.background.dashboard.link}
               <span aria-hidden="true" className="ml-0.5 inline-block text-[0.7em] align-super">
                 ↗
               </span>
             </a>
-            {d.greenCity.dashboard.after}
+            {d.background.dashboard.after}
           </p>
         </div>
       </Section>

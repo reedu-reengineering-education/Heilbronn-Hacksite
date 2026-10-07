@@ -50,7 +50,6 @@ export const dataSources: DataSource[] = [
     endpoints: [
       { label: "OSeM bike data", url: bike("osem_bike_data"), description: "Raw sensor data." },
       { label: "Tracks", url: bike("tracks"), description: "Complete bike tracks and routes." },
-      { label: "Track points", url: bike("track_points"), description: "Individual GPS track points." },
       { label: "Bumpy roads", url: bike("bumpy_roads_heilbronn"), description: "Roads with poor surface conditions." },
       { label: "Danger zones", url: bike("danger_zones_heilbronn"), description: "Areas marked as dangerous for cyclists." },
       { label: "Overtaking distance", url: bike("overtaking_distance_heilbronn"), description: "Measured distances of passing vehicles." },
@@ -100,17 +99,23 @@ export const dataSources: DataSource[] = [
     summary:
       "Smart bird houses all over Heilbronn that log visits and conditions, giving a window into how urban wildlife responds to the changing climate.",
     measurements: ["Bird pictures", "Visits", "Temperature", "Humidity"],
-    endpoints: [],
-    docs: [{ label: "Green City Heilbronn", url: "https://greencity.hn/" }],
+    endpoints: [
+      { label: "Starter notebook (Colab)", url: "https://colab.research.google.com/github/reedu-reengineering-education/Heilbronn-Hacksite/blob/main/public/birdiary_starter.ipynb", description: "Python notebook that that gives a brief overview over usage of the Birdiary API." },
+      { label: "Starter notebook (Github)", url: "https://github.com/reedu-reengineering-education/Heilbronn-Hacksite/blob/main/public/birdiary_starter.ipynb", description: "Alternative link to that same notebook." },
+    ],
+    docs: [
+      { label: "Project Page", url: "https://wiediversistmeingarten.org/" },
+      { label: "Map of all stations", url: "https://wiediversistmeingarten.org/view/" },
+      { label: "Code", url: "https://github.com/Birdiary" },
+      { label: "Green City Dashboard", url: "https://greencity.hn/sammlung/biodiversitt" }],
   },
   {
     name: "Smart Beehive",
     image: "/data/smart-beehive.jpg",
     summary:
       "Sensor-equipped beehive at the OpenSpace, plus experimental entrance videos with labelled bee activity for machine learning.",
-    measurements: ["Temperature (in/out)", "Humidity (in/out)", "Entrance videos", "Bee activity labels"],
+    measurements: ["Temperature", "Humidity", "Entrance videos", "Bee activity labels"],
     endpoints: [
-      // placeholders — data hosting location TBD
       { label: "Sensor data", url: "https://beehive-grafana-production.up.railway.app/goto/XqTJWzrDR?orgId=1", description: "Environmental data inside and outside of three beehives around the OpenSpace." },
       { label: "Labelled entrance videos", url: "https://cloud.reedu.de/s/YkHckREGAM89z9m", description: "Beehive entrance videos recorded with the senseBox MCU Eye. Potentially useful for machine learning." },
     ],
@@ -121,7 +126,7 @@ export const dataSources: DataSource[] = [
     image: "/resources/more.png",
     summary:
       "Public datasets that complement the sensor data above, for Heilbronn and beyond.",
-    measurements: ["Weather", "Transport", "Administrative data"],
+    measurements: ["Weather", "Transport", "Administrative data", "..."],
     endpoints: [
       { label: "GovData", url: "https://www.govdata.de/", description: "German open government data portal." },
       { label: "DWD Open Data", url: "https://opendata.dwd.de/", description: "Weather service observations and forecasts." },
