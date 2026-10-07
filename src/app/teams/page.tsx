@@ -67,7 +67,7 @@ export default async function TeamsPage() {
           ))}
         </ul>
       )}
-      <div className="mb-8 flex flex-wrap items-center gap-3">
+      <div className="mt-6 mb-8 flex flex-wrap items-center gap-3">
         <span className="font-mono text-sm text-ink-muted">
           {t(d.teams.count, { count: rows.length })}
         </span>
