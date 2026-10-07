@@ -19,7 +19,7 @@ const en = {
     skipToContent: "Skip to content",
   },
   footer: {
-    contact: "Contact",
+    imprint: "Imprint",
     privacy: "Privacy policy",
     rights: "All rights reserved.",
   },

@@ -28,8 +28,8 @@ export function SiteFooter({ d }: { d: Dictionary }) {
           aria-label="Footer"
           className="flex gap-8 font-mono text-sm uppercase tracking-wide"
         >
-          <Link href="/contact" className="text-ink-muted hover:text-accent">
-            {d.footer.contact}
+          <Link href="/imprint" className="text-ink-muted hover:text-accent">
+            {d.footer.imprint}
           </Link>
           <Link href="/privacy" className="text-ink-muted hover:text-accent">
             {d.footer.privacy}
