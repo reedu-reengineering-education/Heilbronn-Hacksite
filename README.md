@@ -14,11 +14,13 @@ reverse proxy (Caddy, nginx, Traefik, …) on that network and point it there.
 ```bash
 docker network create proxy        # once per server
 cp .env.example .env               # set POSTGRES_PASSWORD, SESSION_SECRET, ADMIN_PASSPHRASE
-docker compose up -d --build
+docker compose up -d
 ```
 
+The `app` image is built by GitHub Actions on every push to `main` and
+published as `ghcr.io/reedu-reengineering-education/heilbronn-hacksite:main`.
 Migrations run on every container start, so updating is
-`git pull && docker compose up -d --build`.
+`docker compose pull && docker compose up -d`.
 
 ## Local development
 

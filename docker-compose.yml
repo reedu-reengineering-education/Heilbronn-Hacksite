@@ -18,7 +18,7 @@ services:
 
 
   app:
-    build: .
+    image: ghcr.io/reedu-reengineering-education/heilbronn-hacksite:main
     restart: unless-stopped
     depends_on:
       db:
