@@ -109,12 +109,12 @@ const en = {
           "Parks, trees, insects and birds: how can we see, protect and grow nature in the city?",
       },
       protection: {
-        name: "Climate mitigation",
+        name: "Climate Change: Mitigation",
         description:
           "Cutting emissions from energy, mobility and buildings: what can the city and its people do?",
       },
       adaptation: {
-        name: "Climate adaptation",
+        name: "Climate Change: Adaptation",
         description:
           "Heat, drought and heavy rain are coming: how do we prepare the city and protect those most at risk?",
       },
