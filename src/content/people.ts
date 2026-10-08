@@ -15,8 +15,8 @@ export type Mentor = {
 export const mentors: Mentor[] = [
   { name: "Umut Tas", interest: "Impact", avatar: "/mentors/org/umut.jpg", altAvatar: "/mentors/alt/umut.jpg" },
   { name: "Jan Wirwahn", interest: "Hardware", avatar: "/mentors/org/jan.jpg", altAvatar: "/mentors/alt/jan.jpg" },
-  { name: "Eric Thieme-Garmann", interest: "Software", avatar: "/mentors/org/eric.jpg", altAvatar: "/mentors/alt/eric.jpg" },
-  { name: "Felix Erdmann", interest: "Data", avatar: "/mentors/org/felix.jpg", altAvatar: "/mentors/alt/felix.jpg" },
-  { name: "Dr. Steffen Ciprina", interest: "Education", avatar: "/mentors/org/steffen.jpg", altAvatar: "/mentors/alt/steffen.jpg" },
+  { name: "Eric Thieme-Garmann", interest: "Software", avatar: "/mentors/org/eric.jpg", altAvatar: "/mentors/alt/eric.png" },
+  { name: "Felix Erdmann", interest: "Data", avatar: "/mentors/org/felix.jpg", altAvatar: "/mentors/alt/felix.png" },
+  { name: "Dr. Steffen Ciprina", interest: "Education", avatar: "/mentors/org/steffen.jpg", altAvatar: "/mentors/alt/steffen.jpeg" },
   { name: "Eva Jacobs", interest: "Education", avatar: "/mentors/org/eva.png", altAvatar: "/mentors/alt/eva.png" },
 ];
