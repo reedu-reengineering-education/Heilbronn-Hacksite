@@ -29,6 +29,7 @@ export const hardware: ResourceItem[] = [
     badge: docs("Microcontroller"),
     links: [
       { label: docs("Documentation"), url: "https://docs.sensebox.de/docs/boards/mcus2/mcu-s2-overview?board=edus2" },
+      { label: docs("Example Scripts"), url: "https://github.com/sensebox/senseBox-MCU-S2-ESP32S2/tree/main/examples" },
     ],
   },
   {
@@ -38,15 +39,20 @@ export const hardware: ResourceItem[] = [
     badge: docs("Microcontroller"),
     links: [
       { label: docs("Documentation"), url: "https://docs.sensebox.de/docs/boards/eye/eye-overview?board=eye" },
+      { label: docs("Example Scripts"), url: "https://github.com/sensebox/senseBox_Eye/tree/main/examples" },
     ],
   },
   {
     name: "senseBox Sensors",
     image: "/resources/senseBox-Sensors.png",
-    summary: docs("There exist many different sensors for the senseBox. Ask a Mentor which ones are available. The sensor connector on the MCUs is a standard connector, so you can also attach many other sensors outside the senseBox universe."),
+    summary: docs("There exist many different sensors for the senseBox. Ask a Mentor which ones are available."),
     badge: docs("Sensors"),
     links: [
-      { label: docs("Documentation"), url: "https://docs.sensebox.de/docs/boards/mcus2/mcu-s2-overview?board=edus2" },
+      { label: docs("Temperature+Humidity"), url: "https://docs.sensebox.de/en/docs/hardware/sensors/temperatur-luftfeuchte/?board=edus2" },
+      { label: docs("Brightness+UV"), url: "https://docs.sensebox.de/en/docs/hardware/sensors/helligkeit-uv/?board=edus2" },
+      { label: docs("Pressure+Temperature"), url: "https://docs.sensebox.de/en/docs/hardware/sensors/luftdruck-temperatur/?board=edus2" },
+      { label: docs("Distance"), url: "https://docs.sensebox.de/en/docs/hardware/sensors/tof/?board=edus2" },
+      { label: docs("Air Quality"), url: "https://docs.sensebox.de/en/docs/hardware/sensors/feinstaub-sps30?board=bike" },
     ],
   },
   {
