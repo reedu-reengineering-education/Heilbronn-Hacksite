@@ -27,10 +27,9 @@ export type DataSource = {
   endpoints: DataEndpoint[];
   /** Documentation and further info, shown at the bottom of the back. */
   docs: ResourceLink[];
+  /** Internal path of a detail page explaining the data, linked on the back. */
+  guide?: string;
 };
-
-const bike = (collection: string) =>
-  `https://api.atrai.bike/collections/${collection}/items?f=json&limit=1000000`;
 
 export const dataSources: DataSource[] = [
   {
@@ -47,21 +46,12 @@ export const dataSources: DataSource[] = [
       "Overtaking distance",
       "GPS tracks",
     ],
-    endpoints: [
-      { label: "OSeM bike data", url: bike("osem_bike_data"), description: "Raw sensor data." },
-      { label: "Tracks", url: bike("tracks"), description: "Complete bike tracks and routes." },
-      { label: "Bumpy roads", url: bike("bumpy_roads_heilbronn"), description: "Roads with poor surface conditions." },
-      { label: "Danger zones", url: bike("danger_zones_heilbronn"), description: "Areas marked as dangerous for cyclists." },
-      { label: "Overtaking distance", url: bike("overtaking_distance_heilbronn"), description: "Measured distances of passing vehicles." },
-      { label: "Speed map", url: bike("speed_map_heilbronn"), description: "Measured speeds across the city." },
-      { label: "Traffic flow", url: bike("traffic_flow_heilbronn"), description: "Traffic flow derived from the tracks." },
-      { label: "Statistics", url: bike("statistics"), description: "Aggregated statistics of the dataset." },
-      { label: "Road network", url: bike("road_network_heilbronn"), description: "Complete road network layer." },
-    ],
+    endpoints: [],
     docs: [
       { label: "map with data", url: "https://data.atrai.bike/" },
       { label: "About the device", url: "https://sensebox.de/de/products-bike" },
     ],
+    guide: "/resources/bike-data",
   },
   {
     name: "Mobile Datalogger",

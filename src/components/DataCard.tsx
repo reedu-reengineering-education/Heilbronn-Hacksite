@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useState } from "react";
 import type { DataSource } from "@/content/data";
 import { Badge, cardClass } from "@/components/ui";
@@ -11,6 +12,16 @@ const face = "col-start-1 row-start-1 flex flex-col [backface-visibility:hidden]
 export function DataCard({ item }: { item: DataSource }) {
   const [flipped, setFlipped] = useState(false);
   const toggle = () => setFlipped((f) => !f);
+
+  const guideLink = item.guide ? (
+    <Link
+      href={item.guide}
+      onClick={(e) => e.stopPropagation()}
+      className="inline-flex rounded-lg border-2 border-brand px-5 py-2.5 font-mono text-sm font-semibold uppercase tracking-wide text-brand-strong hover:bg-brand-soft"
+    >
+      data guide →
+    </Link>
+  ) : null;
 
   return (
     <li className="[perspective:1200px]">
@@ -52,7 +63,7 @@ export function DataCard({ item }: { item: DataSource }) {
                 </li>
               ))}
             </ul>
-            <span className="mt-4 text-xs text-ink-muted">Click to see data endpoints ↻</span>
+            <span className="mt-4 text-xs text-ink-muted">Click for data ↻</span>
           </div>
         </div>
 
@@ -73,28 +84,39 @@ export function DataCard({ item }: { item: DataSource }) {
           className={`${face} cursor-pointer p-5 ${cardClass}`}
         >
           <h3 className="text-lg font-semibold text-ink">{item.name}</h3>
-          <h4 className="mt-3 text-xs font-semibold uppercase tracking-wide text-ink-muted">
-            Data endpoints
-          </h4>
+          {item.guide && item.endpoints.length > 0 ? <div className="mt-4 self-start">{guideLink}</div> : null}
           {item.endpoints.length > 0 ? (
-            <ul className="mt-2 flex-1 space-y-2">
-              {item.endpoints.map((ep) => (
-                <li key={ep.url} className="text-sm leading-snug">
-                  <a
-                    href={ep.url}
-                    target="_blank"
-                    rel="noreferrer"
-                    onClick={(e) => e.stopPropagation()}
-                    className="font-medium text-brand-strong underline-offset-4 hover:underline"
-                  >
-                    {ep.label} ↗
-                  </a>
-                  <span className="block text-ink-muted">{ep.description}</span>
-                </li>
-              ))}
-            </ul>
+            <>
+              <h4 className="mt-3 text-xs font-semibold uppercase tracking-wide text-ink-muted">
+                Data endpoints
+              </h4>
+              <ul className="mt-2 flex-1 space-y-2">
+                {item.endpoints.map((ep) => (
+                  <li key={ep.url} className="text-sm leading-snug">
+                    <a
+                      href={ep.url}
+                      target="_blank"
+                      rel="noreferrer"
+                      onClick={(e) => e.stopPropagation()}
+                      className="font-medium text-brand-strong underline-offset-4 hover:underline"
+                    >
+                      {ep.label} ↗
+                    </a>
+                    <span className="block text-ink-muted">{ep.description}</span>
+                  </li>
+                ))}
+              </ul>
+            </>
+          ) : item.guide ? (
+            // The guide covers the endpoints, so it gets the free space in the middle.
+            <div className="flex flex-1 items-center justify-center py-4">{guideLink}</div>
           ) : (
-            <p className="mt-2 flex-1 text-sm text-ink-muted">Details will follow.</p>
+            <>
+              <h4 className="mt-3 text-xs font-semibold uppercase tracking-wide text-ink-muted">
+                Data endpoints
+              </h4>
+              <p className="mt-2 flex-1 text-sm text-ink-muted">Details will follow.</p>
+            </>
           )}
           {item.docs.length > 0 ? (
             <div className="mt-4 border-t border-line pt-3">
