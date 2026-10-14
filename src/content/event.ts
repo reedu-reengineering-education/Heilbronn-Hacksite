@@ -291,7 +291,7 @@ export const faq: FaqEntry[] = [
 /* ---------------------------------------------------------- organisations */
 
 export const organisations = [
-  { name: "Arkadia", logo: "/organisations/arkadia.svg", link: "https://arkadia.hn/" },
-  { name: "aim", logo: "/organisations/aim.png", link: "https://www.aim-akademie.org/" },
-  { name: "re:edu", logo: "/organisations/reedu.png", link: "https://reedu.de/" },
+  { name: "Arkadia", logo: "/organisations/arkadia.png", link: "https://arkadia.hn/" },
+  { name: "aim", logo: "/organisations/aim.svg", link: "https://www.aim-akademie.org/" },
+  { name: "re:edu", logo: "/organisations/reedu.svg", link: "https://reedu.de/" },
 ] as const;
