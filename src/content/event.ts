@@ -76,8 +76,8 @@ export const schedule: ScheduleDay[] = [
       "Registration, welcome and an introduction to the data and sensors. Pitch your ideas, form teams and start hacking — with the first optional workshops in the afternoon.",
     entries: [
       {
-        start: "10:00",
-        end: "12:00",
+        start: "10:30",
+        end: "11:00",
         title: "Registration",
         detail: "Check in at the accreditation desk.",
       },
@@ -96,53 +96,39 @@ export const schedule: ScheduleDay[] = [
       },
       {
         start: "12:00",
-        end: "12:30",
-        title: "Inspiration round",
-        detail: "30 minutes to explore freely: What interests me? What would I like to investigate or build?",
-      },
-      {
-        start: "12:00",
         end: "13:00",
         title: "🍽️ Lunch break (pizza)",
         isBreak: true,
       },
       {
         start: "13:00",
-        end: "13:30",
-        title: "Activation training",
-      },
-      {
-        start: "13:00",
-        end: "13:30",
-        title: "Pitch your ideas",
-        detail:
-          "Everyone submits their ideas through a shared online board and presents them on stage. Teams show whether they still have room or need people with particular skills.",
-      },
-      {
-        start: "13:30",
         end: "14:00",
-        title: "Team building",
+        title: "Pitches & team formation",
         detail:
-          "Ideas are clustered and teams form around them. Several teams can work on the same idea, and not every idea will be built.",
+          "Teams that still need members pitch their idea on stage (60 seconds). The city presents the challenge. Teams form and agree on their plans with the mentors.",
       },
       {
         start: "14:00",
+        end: "14:30",
+        title: "Activation training",
+      },
+      {
+        start: "14:30",
         end: "15:00",
         title: "Work phase 1",
         detail:
-          "The hacking begins: explore the data, ask your first questions and decide on your approach. Mentors are on hand.",
+          "Explore the data, ask your first questions and define your approach. Mentors are on hand.",
       },
       {
         start: "15:00",
-        end: "15:30",
+        end: "16:00",
         title: "Workshop slot 1 (optional)",
-        detail: "Pick a workshop that interests you.",
+        detail: "Q&A session: pick the workshop that interests you.",
       },
       {
-        start: "17:30",
+        start: "16:00",
         end: "18:00",
-        title: "Daily check-in",
-        detail: "A short stand-up: What did we do today? What's next tomorrow?",
+        title: "Work phase 2",
       },
       {
         start: "18:00",
@@ -166,7 +152,7 @@ export const schedule: ScheduleDay[] = [
       {
         start: "10:00",
         end: "12:00",
-        title: "Work phase 2",
+        title: "Work phase 3",
         detail:
           "The main work phase. Teams go deeper: data analysis, visualisation, prototyping. Mentors rotate between teams.",
       },
@@ -182,22 +168,18 @@ export const schedule: ScheduleDay[] = [
         title: "Activation training",
       },
       {
-        start: "13:00",
-        end: "13:30",
-        title: "Workshop slot 2 (optional)",
-        detail: "Pick a workshop that interests you.",
-      },
-      {
         start: "13:30",
-        end: "17:00",
-        title: "Work phase 3",
-        detail: "Focus on results: What will we show tomorrow? Start developing ideas for your presentation.",
+        end: "18:00",
+        title: "Work phase 4",
+        detail:
+          "Focus on results: what will we show tomorrow? Start developing ideas for your presentation.",
       },
       {
-        start: "17:30",
-        end: "18:00",
-        title: "Daily check-in",
-        detail: "Stand-up: What's still left to do for tomorrow?",
+        start: "14:00",
+        end: "15:00",
+        title: "Workshop slot 2 (optional)",
+        detail:
+          "Pick a workshop that interests you. Ad-hoc workshops on topics that several teams need may be added.",
       },
       {
         start: "18:00",
@@ -216,12 +198,12 @@ export const schedule: ScheduleDay[] = [
     date: "29 Oct 2026",
     title: "Wrap-up & pitch",
     summary:
-      "Last work phases and the selection of the finalists, then the finale on stage, the jury's decision and the award ceremony.",
+      "The last work phase, the exhibition setup and an open-space fair where participants vote for their favourites, then the finale on stage, the jury's decision and the award ceremony.",
     entries: [
       {
         start: "10:00",
         end: "12:00",
-        title: "Work phase 4",
+        title: "Work phase 5",
       },
       {
         start: "12:00",
@@ -231,30 +213,30 @@ export const schedule: ScheduleDay[] = [
       },
       {
         start: "13:00",
-        end: "14:00",
+        end: "14:30",
         title: "Final work phase",
       },
       {
-        start: "14:00",
+        start: "14:30",
         end: "15:00",
-        title: "Submission & selection of the finalists",
-        detail:
-          "Each team pitches its project to its mentor. This decides who presents on the big stage and has a chance at the podium.",
+        title: "Exhibition setup",
+        detail: "Each team sets up its own space: one monitor and one table per team.",
       },
       {
         start: "15:00",
         end: "16:00",
-        title: "Final work phase",
-        detail: "Last touches. We provide a slide template for your presentation.",
+        title: "Exhibition",
+        detail: "All projects are shown as an open-space fair. Participants vote for their favourites.",
       },
       {
-        start: "16:00",
-        end: "17:00",
+        start: "16:15",
+        end: "17:15",
         title: "🏆 Finale",
-        detail: "The finalist teams present their results on stage (about 5–10 minutes per team).",
+        detail:
+          "The teams that advanced from the exhibition present their results on the stage (about 5–10 minutes per team).",
       },
       {
-        start: "17:00",
+        start: "17:15",
         end: "17:30",
         title: "Jury deliberation",
       },
@@ -262,7 +244,7 @@ export const schedule: ScheduleDay[] = [
         start: "17:30",
         end: "18:00",
         title: "Award ceremony & certificates",
-        detail: "Prizes for the winning teams and certificates of participation for everyone.",
+        detail: "Prizes (if any) and certificates of participation for everyone.",
       },
     ],
   },
