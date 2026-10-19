@@ -88,7 +88,7 @@ export const bikeGuide = {
       geometry: "LineString",
       row: "street segment",
       fields: ["Roughness", "Normalized Roughness", "Number of Boxes", "name"],
-      how: "The box's AI estimates the probability of each surface type. Each measurement gets a score = weighted sum of these probabilities with **asphalt = 1, paving = 2, compacted = 3, sett (cobblestones) = 4**, then the scores are averaged per segment. Higher = bumpier. `Normalized Roughness` is the same value on a ×10 scale.",
+      how: "The box's AI estimates the probability of each surface type. Each measurement gets a score = weighted sum of these probabilities with **asphalt = 1, paving = 2, compacted = 3, sett (cobblestones) = 4**, then the scores are averaged per segment. Higher = bumpier. `Normalized Roughness` is the same value but scaled to be between 0 and 1.",
     },
     {
       name: "danger_zones_<city>",
