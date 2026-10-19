@@ -1,16 +1,31 @@
 import Image from "next/image";
-import { mentors } from "@/content/people";
+import { mentors, orgaTeam, type Mentor } from "@/content/people";
 import { dictionary as d } from "@/i18n";
 import { MentorCard } from "@/components/MentorCard";
 import { Section } from "@/components/ui";
 
-function MentorGrid() {
+/** Regular mentors first, then the awareness team, then remote mentors. */
+const groups: Array<Mentor["team"]> = [undefined, "awareness", "remote"];
+
+/** Same column widths as a 1/2/4-column grid, but incomplete rows are centered. */
+function MentorRow({ members }: { members: Mentor[] }) {
   return (
-    <ul className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-      {mentors.map((mentor) => (
-        <MentorCard key={mentor.name} mentor={mentor} />
+    <ul className="flex flex-wrap justify-center gap-5 [&>li]:w-full sm:[&>li]:w-[calc((100%_-_1.25rem)/2)] lg:[&>li]:w-[calc((100%_-_3.75rem)/4)]">
+      {members.map((mentor, i) => (
+        <MentorCard key={`${mentor.name}-${i}`} mentor={mentor} />
       ))}
     </ul>
+  );
+}
+
+function MentorGrid() {
+  return (
+    <div className="flex flex-col gap-5">
+      {groups.map((team) => {
+        const members = mentors.filter((mentor) => mentor.team === team);
+        return members.length > 0 ? <MentorRow key={team ?? "standard"} members={members} /> : null;
+      })}
+    </div>
   );
 }
 
@@ -35,6 +50,12 @@ export default function MentorsJuryPage() {
             sizes="(min-width: 1024px) 72rem, 100vw"
           />
         </div>
+      </Section>
+
+      <Section title={d.mentorsJury.orgaTitle} lead={d.mentorsJury.orgaLead}>
+        <MentorRow
+          members={orgaTeam.map((m) => ({ name: m.name, interest: m.organization, avatar: m.avatar }))}
+        />
       </Section>
     </>
   );

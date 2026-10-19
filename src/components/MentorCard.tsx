@@ -4,6 +4,9 @@ import Image from "next/image";
 import { useState } from "react";
 import type { Mentor } from "@/content/people";
 import { cardClass } from "@/components/ui";
+import { dictionary as d } from "@/i18n";
+
+const AWARENESS_INFO_URL = "https://de.wikipedia.org/wiki/Awareness-Team";
 
 const face = "col-start-1 row-start-1 [backface-visibility:hidden]";
 
@@ -34,6 +37,29 @@ function Avatar({ mentor }: { mentor: Mentor }) {
   );
 }
 
+/** Small pill naming the mentor's team; awareness gets a "?" link explaining the term. */
+function TeamBadge({ team }: { team: NonNullable<Mentor["team"]> }) {
+  return (
+    <span className="mt-2 inline-flex items-center gap-1.5 rounded-full border border-line bg-surface-sunken px-2.5 py-0.5 text-xs font-medium text-ink-muted">
+      {d.mentorsJury.teams[team]}
+      {team === "awareness" ? (
+        <a
+          href={AWARENESS_INFO_URL}
+          target="_blank"
+          rel="noreferrer"
+          title={d.mentorsJury.awarenessInfo}
+          aria-label={d.mentorsJury.awarenessInfo}
+          onClick={(e) => e.stopPropagation()}
+          onKeyDown={(e) => e.stopPropagation()}
+          className="flex h-4 w-4 items-center justify-center rounded-full border border-current font-mono text-[0.65rem] leading-none hover:text-accent"
+        >
+          ?
+        </a>
+      ) : null}
+    </span>
+  );
+}
+
 /** Mentor card; flips to the alternative picture on click when one exists. */
 export function MentorCard({ mentor }: { mentor: Mentor }) {
   const [flipped, setFlipped] = useState(false);
@@ -52,6 +78,7 @@ export function MentorCard({ mentor }: { mentor: Mentor }) {
       <div>
         <h3 className="text-lg font-semibold text-ink">{mentor.name}</h3>
         <p className="mt-1 text-sm font-medium text-accent">{mentor.interest}</p>
+        {mentor.team ? <TeamBadge team={mentor.team} /> : null}
       </div>
     </>
   );

@@ -57,7 +57,7 @@ export function Section({
             {title}
           </h2>
         ) : null}
-        {lead ? <p className="mt-3 max-w-2xl text-lg leading-relaxed text-ink-muted">{lead}</p> : null}
+        {lead ? <p className="mt-3 text-lg leading-relaxed text-ink-muted">{lead}</p> : null}
         {children ? <div className={title || lead ? "mt-8" : undefined}>{children}</div> : null}
       </div>
     </section>

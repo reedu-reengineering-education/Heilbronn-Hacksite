@@ -160,7 +160,14 @@ const en = {
     mentorsTitle: "Mentors",
     mentorsLead: "Ask them anything — that's what they're here for.",
     areaOfInterest: "Area of interest",
+    teams: {
+      awareness: "Awareness team",
+      remote: "Remote",
+    },
+    awarenessInfo: "Ask them for help in case of interpersonal issues.",
     juryTitle: "Jury",
+    orgaTitle: "Orga team",
+    orgaLead: "Questions about organisation or accreditation? They are your men and women.",
   },
   teams: {
     title: "Teams",
