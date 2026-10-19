@@ -66,7 +66,16 @@ export function FlipCard({ item }: { item: ResourceItem }) {
             <h3 className="text-lg font-semibold text-ink">{item.name}</h3>
             {item.badge ? <Badge tone="brand">{item.badge}</Badge> : null}
           </div>
-          <p className="mt-2 flex-1 whitespace-pre-line text-sm leading-relaxed text-ink-muted">{item.summary}</p>
+          {/* render bold text */}
+          <p className="mt-2 flex-1 whitespace-pre-line text-sm leading-relaxed text-ink-muted">
+            {item.summary.split(/(\*\*[^*]+\*\*)/).map((part, i) =>
+              part.startsWith("**") ? (
+                <strong key={i} className="font-semibold text-brand">{part.slice(2, -2)}</strong>
+              ) : (
+                part
+              ),
+            )}
+          </p>
           {item.links.length > 0 ? (
             <ul className="mt-4 flex flex-wrap gap-x-4 gap-y-1">
               {item.links.map((link) => (

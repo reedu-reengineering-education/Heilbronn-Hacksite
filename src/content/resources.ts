@@ -87,7 +87,7 @@ export const software: ResourceItem[] = [
     name: "openSenseMap",
     image: "/software/osem.png",
     summary: docs(
-      "Open platform for environmental measurements. Upload, query and visualise data.  \n Please note that the current version is approaching its end-of-life and might occasionally be slow or unresponsive. The new experimental website will eventually replace it, but so far includes only a very limited dataset.",
+      "Open platform for environmental measurements. Upload, query and visualise data.  \n **Please note** that the current version is approaching its end-of-life and might occasionally be slow or unresponsive. The new experimental website will eventually replace it, but so far includes only a very limited dataset.",
     ),
     badge: docs("Platform & API"),
     links: [
@@ -103,6 +103,16 @@ export const software: ResourceItem[] = [
     badge: docs("Tooling"),
     links: [
       { label: docs("Website"), url: "https://kepler.gl/" },
+    ],
+  },
+  {
+    name: "Green City Dashboard",
+    image: "/software/greencity-dashboard.png",
+    summary: docs("The Green City Dashboard Heilbronn provides real time information about climate, environment and mobility for the city of Heilbronn.  \n We would love for you to create new tiles and subpages for the dashboard!"),
+    badge: docs("Dashboard"),
+    links: [
+      { label: docs("Dashboard Code"), url: "https://github.com/reedu-reengineering-education/Green-City-Dashboard" },
+      { label: docs("Dashboard"), url: "https://greencity.hn/" },
     ],
   },
   {
