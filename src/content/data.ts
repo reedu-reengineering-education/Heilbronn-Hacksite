@@ -106,7 +106,7 @@ export const dataSources: DataSource[] = [
       "Sensor-equipped beehive at the OpenSpace, plus experimental entrance videos with labelled bee activity for machine learning.",
     measurements: ["Temperature", "Humidity", "Entrance videos", "Bee activity labels"],
     endpoints: [
-      { label: "Sensor data", url: "https://beehive-grafana-production.up.railway.app/goto/XqTJWzrDR?orgId=1", description: "Environmental data inside and outside of three beehives around the OpenSpace." },
+      { label: "Sensor data", url: "https://beehive-grafana-production.up.railway.app/d/beehappy-monitor/beehappy-e28094-bienenstock-monitor?orgId=1&from=now-7d&to=now&timezone=browser&refresh=15m", description: "Environmental data inside and outside of three beehives around the OpenSpace." },
       { label: "Labelled entrance videos", url: "https://cloud.reedu.de/s/YkHckREGAM89z9m", description: "Beehive entrance videos recorded with the senseBox MCU Eye. Potentially useful for machine learning." },
     ],
     docs: [],
