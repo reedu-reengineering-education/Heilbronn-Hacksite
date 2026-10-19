@@ -84,6 +84,16 @@ export const hardware: ResourceItem[] = [
 
 export const software: ResourceItem[] = [
   {
+    name: "Green City Dashboard",
+    image: "/software/greencity-dashboard.png",
+    summary: docs("The Green City Dashboard Heilbronn provides real time information about climate, environment and mobility for the city of Heilbronn.  \n We would love for you to create new tiles and subpages for the dashboard!"),
+    badge: docs("Dashboard"),
+    links: [
+      { label: docs("Dashboard Code"), url: "https://github.com/reedu-reengineering-education/Green-City-Dashboard" },
+      { label: docs("Dashboard"), url: "https://greencity.hn/" },
+    ],
+  },
+  {
     name: "openSenseMap",
     image: "/software/osem.png",
     summary: docs(
@@ -103,16 +113,6 @@ export const software: ResourceItem[] = [
     badge: docs("Tooling"),
     links: [
       { label: docs("Website"), url: "https://kepler.gl/" },
-    ],
-  },
-  {
-    name: "Green City Dashboard",
-    image: "/software/greencity-dashboard.png",
-    summary: docs("The Green City Dashboard Heilbronn provides real time information about climate, environment and mobility for the city of Heilbronn.  \n We would love for you to create new tiles and subpages for the dashboard!"),
-    badge: docs("Dashboard"),
-    links: [
-      { label: docs("Dashboard Code"), url: "https://github.com/reedu-reengineering-education/Green-City-Dashboard" },
-      { label: docs("Dashboard"), url: "https://greencity.hn/" },
     ],
   },
   {

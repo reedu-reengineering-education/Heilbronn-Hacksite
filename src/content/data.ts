@@ -118,6 +118,9 @@ export const dataSources: DataSource[] = [
       "Public datasets that complement the sensor data above, for Heilbronn and beyond.",
     measurements: ["Weather", "Transport", "Administrative data", "..."],
     endpoints: [
+      { label: "OpenData Heilbronn", url: "https://opendata.heilbronn.de/", description: "Open data portal of the city of Heilbronn." },
+      { label: "MOBIDATA BW", url: "https://mobidata-bw.de/dataset/?q=heilbronn", description: "Mobility data for Baden-Württemberg: public transport, sharing, parking and more." },
+      { label: "Bright Sky", url: "https://brightsky.dev/", description: "Free JSON API for DWD weather data." },
       { label: "GovData", url: "https://www.govdata.de/", description: "German open government data portal." },
       { label: "DWD Open Data", url: "https://opendata.dwd.de/", description: "Weather service observations and forecasts." },
       { label: "Open-Meteo", url: "https://open-meteo.com/", description: "Free weather API with historic data." },
