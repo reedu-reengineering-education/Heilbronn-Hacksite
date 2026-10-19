@@ -20,6 +20,7 @@ export default function BackgroundPage() {
       <Section title={d.background.whatTitle}>
         <div className="space-y-4 text-lg leading-relaxed">
           <p>{d.background.what}</p>
+          <p>{d.background.stories}</p>
           <p>
             {d.background.dashboard.before}
             <a

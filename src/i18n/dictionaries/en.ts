@@ -150,6 +150,8 @@ const en = {
     whatTitle: "What do we do at Green City Heilbronn?",
     what:
       "We develop workshops, hackathons (just like this one), and other participatory formats where we collectively collect, analyze, share, and visualize data on topics such as particulate matter, mobility, and biodiversity.",
+    stories:
+      "For example, students mapped Heilbronn's heat islands with self-built temperature loggers, several schools now have their own senseBox:home kits, and citizens measured their cycle paths with the senseBox:bike and monitored local birds with smart bird houses.",
     dashboard: {
       before: "All the data we collect ends up on our public ",
       link: "dashboard",
