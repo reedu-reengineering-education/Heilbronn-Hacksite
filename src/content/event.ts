@@ -46,6 +46,9 @@ export const event = {
 
 /* -------------------------------------------------------------- schedule */
 
+/** break: meals · work: work phases · workshop: optional workshops · finale: exhibition and finale, in the accent colour */
+export type ScheduleEntryKind = "break" | "work" | "workshop" | "finale";
+
 export type ScheduleEntry = {
   /** "HH:MM" */
   start: string;
@@ -53,8 +56,8 @@ export type ScheduleEntry = {
   end?: string;
   title: string;
   detail?: string;
-  /** Breaks (meals etc.) are shown in the accent colour. */
-  isBreak?: boolean;
+  /** Sets the entry's colour; leave out for a plain entry. */
+  kind?: ScheduleEntryKind;
 };
 
 export type ScheduleDay = {
@@ -98,7 +101,7 @@ export const schedule: ScheduleDay[] = [
         start: "12:00",
         end: "13:00",
         title: "🍽️ Lunch break (pizza)",
-        isBreak: true,
+        kind: "break",
       },
       {
         start: "13:00",
@@ -114,27 +117,24 @@ export const schedule: ScheduleDay[] = [
       },
       {
         start: "14:30",
-        end: "15:00",
+        end: "18:00",
         title: "Work phase 1",
+        kind: "work",
         detail:
-          "Explore the data, ask your first questions and define your approach. Mentors are on hand.",
+          "Explore the data, ask your first questions and define your approach. Then get to work! Mentors are on hand.",
       },
       {
         start: "15:00",
         end: "16:00",
         title: "Workshop slot 1 (optional)",
+        kind: "workshop",
         detail: "Q&A session: pick the workshop that interests you.",
-      },
-      {
-        start: "16:00",
-        end: "18:00",
-        title: "Work phase 2",
       },
       {
         start: "18:00",
         end: "18:30",
         title: "🍽️ Dinner (catering)",
-        isBreak: true,
+        kind: "break",
       },
       {
         start: "18:30",
@@ -150,17 +150,32 @@ export const schedule: ScheduleDay[] = [
       "A full day to build: data analysis, visualisation and prototyping, with mentors rotating between teams and a second round of optional workshops.",
     entries: [
       {
+        start: "09:00",
+        end: "10:00",
+        title: "🍽️ Breakfast (catering)",
+        kind: "break",
+      },
+      {
         start: "10:00",
         end: "12:00",
-        title: "Work phase 3",
+        title: "Work phase 2",
+        kind: "work",
         detail:
           "The main work phase. Teams go deeper: data analysis, visualisation, prototyping. Mentors rotate between teams.",
+      },
+      {
+        start: "11:00",
+        end: "12:00",
+        title: "Workshop slot 2 (optional)",
+        kind: "workshop",
+        detail:
+          "Pick a workshop that interests you. Ad-hoc workshops on topics that several teams need may be added.",
       },
       {
         start: "12:00",
         end: "13:00",
         title: "🍽️ Lunch break (catering)",
-        isBreak: true,
+        kind: "break",
       },
       {
         start: "13:00",
@@ -170,22 +185,16 @@ export const schedule: ScheduleDay[] = [
       {
         start: "13:30",
         end: "18:00",
-        title: "Work phase 4",
+        title: "Work phase 3",
+        kind: "work",
         detail:
           "Focus on results: what will we show tomorrow? Start developing ideas for your presentation.",
-      },
-      {
-        start: "14:00",
-        end: "15:00",
-        title: "Workshop slot 2 (optional)",
-        detail:
-          "Pick a workshop that interests you. Ad-hoc workshops on topics that several teams need may be added.",
       },
       {
         start: "18:00",
         end: "18:30",
         title: "🍽️ Dinner (pizza)",
-        isBreak: true,
+        kind: "break",
       },
       {
         start: "18:30",
@@ -201,20 +210,28 @@ export const schedule: ScheduleDay[] = [
       "The last work phase, the exhibition setup and an open-space fair where participants vote for their favourites, then the finale on stage, the jury's decision and the award ceremony.",
     entries: [
       {
+        start: "09:00",
+        end: "10:00",
+        title: "🍽️ Breakfast (catering)",
+        kind: "break",
+      },
+      {
         start: "10:00",
         end: "12:00",
-        title: "Work phase 5",
+        title: "Work phase 4",
+        kind: "work",
       },
       {
         start: "12:00",
         end: "13:00",
         title: "🍽️ Lunch break (catering)",
-        isBreak: true,
+        kind: "break",
       },
       {
         start: "13:00",
         end: "14:30",
         title: "Final work phase",
+        kind: "work",
       },
       {
         start: "14:30",
@@ -226,12 +243,14 @@ export const schedule: ScheduleDay[] = [
         start: "15:00",
         end: "16:00",
         title: "Exhibition",
+        kind: "finale",
         detail: "All projects are shown as an open-space fair. Participants vote for their favourites.",
       },
       {
         start: "16:15",
         end: "17:15",
         title: "🏆 Finale",
+        kind: "finale",
         detail:
           "The teams that advanced from the exhibition present their results on the stage (about 5–10 minutes per team).",
       },
@@ -244,6 +263,7 @@ export const schedule: ScheduleDay[] = [
         start: "17:30",
         end: "18:00",
         title: "Award ceremony & certificates",
+        kind: "finale",
         detail: "Prizes (if any) and certificates of participation for everyone.",
       },
     ],

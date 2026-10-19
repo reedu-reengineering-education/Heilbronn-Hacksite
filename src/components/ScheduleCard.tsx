@@ -1,8 +1,17 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import type { ScheduleDay, ScheduleEntry } from "@/content/event";
+import type { ScheduleDay, ScheduleEntry, ScheduleEntryKind } from "@/content/event";
 import { cardClass } from "@/components/ui";
+
+/** Box (border + background) and title colours for each kind of schedule entry. */
+const KIND_STYLES: Record<ScheduleEntryKind | "plain", { box: string; title: string }> = {
+  plain: { box: "border-ink-muted bg-surface-sunken", title: "text-ink" },
+  break: { box: "border-break bg-break-soft", title: "text-break-strong" },
+  work: { box: "border-work bg-work-soft", title: "text-ink" },
+  workshop: { box: "border-workshop bg-workshop-soft", title: "text-ink" },
+  finale: { box: "border-brand bg-brand-soft", title: "text-brand-strong" },
+};
 
 /** Flip duration in ms; matches duration-500 on the card. */
 const FLIP_MS = 500;
@@ -192,11 +201,11 @@ function DayCalendar({ entries }: { entries: ScheduleEntry[] }) {
                 width: `calc(${100 / lanes}% - 4px)`,
               }}
               className={`group absolute flex cursor-default flex-col overflow-hidden rounded-md border-l-4 px-2 py-1 outline-none transition-shadow hover:z-10 hover:h-auto! hover:shadow-card focus:z-10 focus:h-auto! focus:shadow-card focus-visible:ring-2 focus-visible:ring-brand ${
-                entry.isBreak ? "border-brand bg-brand-soft" : "border-ink-muted bg-surface-sunken"
+                KIND_STYLES[entry.kind ?? "plain"].box
               } ${entry.end ? "" : "[mask-image:linear-gradient(to_bottom,black_50%,transparent)]"}`}
             >
               <p className="font-mono text-[11px] leading-tight text-ink-muted">{time}</p>
-              <p className={`text-sm font-semibold leading-snug ${entry.isBreak ? "text-brand-strong" : "text-ink"}`}>
+              <p className={`text-sm font-semibold leading-snug ${KIND_STYLES[entry.kind ?? "plain"].title}`}>
                 {entry.title}
               </p>
               {entry.detail ? (

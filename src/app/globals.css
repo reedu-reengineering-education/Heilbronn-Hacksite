@@ -28,6 +28,17 @@
   --color-ink: oklch(0.97 0.004 272.6);
   --color-ink-muted: oklch(0.68 0.025 272.6);
 
+  /* Schedule entry kinds. The exhibition/finale uses the brand colours;
+     meals are a warm amber, work phases a cool blue and workshops a violet,
+     all quieter than the brand. */
+  --color-break: oklch(0.8 0.13 70);
+  --color-break-strong: oklch(0.86 0.12 75);
+  --color-break-soft: oklch(0.26 0.05 60);
+  --color-work: oklch(0.7 0.11 235);
+  --color-work-soft: oklch(0.21 0.05 245);
+  --color-workshop: oklch(0.72 0.12 300);
+  --color-workshop-soft: oklch(0.22 0.06 300);
+
   /* Feedback. Positive is a distinct, warmer green so it doesn't read as a brand button. */
   --color-positive: oklch(0.64 0.15 142);
   --color-negative: oklch(0.6 0.19 25);
