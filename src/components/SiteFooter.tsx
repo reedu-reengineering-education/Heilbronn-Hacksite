@@ -1,5 +1,6 @@
 import Link from "next/link";
-import { event, organisations } from "@/content/event";
+import { encodedChatUrl, event, organisations } from "@/content/event";
+import { ChatLink } from "@/components/ChatLink";
 import type { Dictionary } from "@/i18n";
 
 export function SiteFooter({ d }: { d: Dictionary }) {
@@ -26,7 +27,7 @@ export function SiteFooter({ d }: { d: Dictionary }) {
 
         <nav
           aria-label="Footer"
-          className="flex gap-8 font-mono text-sm uppercase tracking-wide"
+          className="flex flex-wrap justify-center gap-x-8 gap-y-3 font-mono text-sm uppercase tracking-wide"
         >
           <Link href="/imprint" className="text-ink-muted hover:text-accent">
             {d.footer.imprint}
@@ -34,6 +35,11 @@ export function SiteFooter({ d }: { d: Dictionary }) {
           <Link href="/privacy" className="text-ink-muted hover:text-accent">
             {d.footer.privacy}
           </Link>
+          {event.contact.chatUrl ? (
+            <ChatLink encoded={encodedChatUrl} className="text-ink-muted hover:text-accent">
+              {event.contact.chatLabel}
+            </ChatLink>
+          ) : null}
         </nav>
 
         <p className="w-full border-t border-line pt-6 text-center font-mono text-xs text-ink-muted">
