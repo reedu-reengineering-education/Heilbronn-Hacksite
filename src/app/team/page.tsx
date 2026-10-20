@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
 import { eq } from "drizzle-orm";
 import { db } from "@/lib/db";
+import { encodedChatUrl, event } from "@/content/event";
 import { teams } from "@/lib/db/schema";
 import { dictionary as d, t } from "@/i18n";
 import { getTeamSession } from "@/lib/session";
 import { Button, ButtonLink, Notice, Section } from "@/components/ui";
+import { ChatLink } from "@/components/ChatLink";
 import { DeleteTeamForm } from "./DeleteTeamForm";
 import { EditTeamForm, SignInForm, SignUpForm } from "./TeamForms";
 import { signOutAction } from "./actions";
@@ -43,12 +45,21 @@ export default async function TeamPage({
   // A cookie for a team that has since been deleted counts as signed out.
   if (!session || !team) {
     return (
-      <Section title={d.team.title}>
-        <div className="grid max-w-4xl gap-5 md:grid-cols-2">
-          <SignUpForm d={d} />
-          <SignInForm d={d} />
-        </div>
-      </Section>
+      <>
+        {event.contact.chatUrl ? (
+          <Section title={d.team.chatTitle} lead={d.team.chatLead} className="pb-0 sm:pb-0">
+            <ChatLink encoded={encodedChatUrl} variant="primary">
+              {d.team.chatCta}
+            </ChatLink>
+          </Section>
+        ) : null}
+        <Section title={d.team.title}>
+          <div className="grid max-w-4xl gap-5 md:grid-cols-2">
+            <SignUpForm d={d} />
+            <SignInForm d={d} />
+          </div>
+        </Section>
+      </>
     );
   }
 

@@ -184,6 +184,9 @@ const en = {
   },
   team: {
     title: "Your team",
+    chatTitle: "Join the community",
+    chatLead: "Join the Mattermost chat to find teammates, ask questions, and share ideas.",
+    chatCta: "Join Mattermost",
     signUpTitle: "Register a new team",
     signUpIntro:
       "Pick a team name and a passphrase. Everyone on the team needs both — that is all we ask for, no email address.",

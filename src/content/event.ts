@@ -34,8 +34,8 @@ export const event = {
   contact: {
     email: "hallo@example.org",
     /** Optional chat link (Matrix, Discord, …). Leave empty to hide. */
-    chatUrl: "",
-    chatLabel: "Team chat",
+    chatUrl: "https://chat.greencity.hn/signup_user_complete/?id=ko6pniubh3bpjf4hzxj448canc",
+    chatLabel: "Mattermost",
   },
 
   /** Footer links. Add or remove freely. */
@@ -43,6 +43,9 @@ export const event = {
     organisation: "reedu GmbH & Co. KG",
   },
 } as const;
+
+/** The chat link, base64-encoded so the plain URL stays out of the HTML. Decoded by ChatLink on click. */
+export const encodedChatUrl = btoa(event.contact.chatUrl);
 
 /* -------------------------------------------------------------- schedule */
 
