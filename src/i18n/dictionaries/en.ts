@@ -31,7 +31,8 @@ const en = {
     countdownHours: "Hours",
     countdownMinutes: "Min",
     countdownSeconds: "Sec",
-    whatTitle: "How can a city become more sustainable and liveable? And how can data help?",
+    whatTitle:
+      "How can a city become more sustainable and liveable? And how can data help?",
     whereTitle: "Where",
     scheduleTitle: "Schedule",
     expectTitle: "What to expect",
@@ -59,16 +60,20 @@ const en = {
     prizeCourseBody:
       "Sensors, hardware, software — whatever your project needs. Real experts and mentors help you turn your idea into a product.",
     participantsTitle: "Who can take part",
-    participantsText: "The Event is for anybody from 16 to 99 years old (or above). If you are younger and want to participate, check out the Autumn School.",
+    participantsText:
+      "The Event is for anybody from 16 to 99 years old (or above). If you are younger and want to participate, check out the Autumn School.",
     bringTitle: "What do I need to bring to the Hackathon?",
-    bringText: "We offer lunch and dinner, plenty of drinks and snacks, toilets, showers and a place where you can setup your sleeping area. Mattresses, blankets, bath items like towels, toothpaste, shower gel etc. are NOT provided and need to be supplied by yourself if you want to sleep on site! Bring your laptop, cables, adapters and any hardware you want or need to use.",
+    bringText:
+      "We offer lunch and dinner, plenty of drinks and snacks, toilets, showers and a place where you can setup your sleeping area. Mattresses, blankets, bath items like towels, toothpaste, shower gel etc. are NOT provided and need to be supplied by yourself if you want to sleep on site! Bring your laptop, cables, adapters and any hardware you want or need to use.",
     faqTitle: "FAQ",
     soloTitle: "Do I need a team, or can I apply solo?",
     soloText:
       "The Hackathon will be done in Teams of up to 6, but you can apply solo and find teammates on site.",
     feeTitle: "Is a fee or deposit required for participation?",
-    feeText: "No! The entire event is free of charge, we also don't request deposits for hardware usage provided by us.",
-    experienceTitle: "Do I need experience or prior knowledge in software or hardware?",
+    feeText:
+      "No! The entire event is free of charge, we also don't request deposits for hardware usage provided by us.",
+    experienceTitle:
+      "Do I need experience or prior knowledge in software or hardware?",
     experienceText:
       "Absolutely not! Everybody is invited to sign up for the Hackathon. We have plenty of mentors, experts and experienced peers on site to help you with all the technical questions and challenges. Don't be discouraged, you will learn plenty of new stuff if you just try it out!",
   },
@@ -148,8 +153,7 @@ const en = {
       "Our goal: to bring people together, raise awareness about the environment, and work together to make Heilbronn more sustainable.",
     ],
     whatTitle: "What do we do at Green City Heilbronn?",
-    what:
-      "We develop workshops, hackathons (just like this one), and other participatory formats where we collectively collect, analyze, share, and visualize data on topics such as particulate matter, mobility, and biodiversity.",
+    what: "We develop workshops, hackathons (just like this one), and other participatory formats where we collectively collect, analyze, share, and visualize data on topics such as particulate matter, mobility, and biodiversity.",
     stories:
       "For example, students mapped Heilbronn's heat islands with self-built temperature loggers, several schools now have their own weather stations, and citizens measured their cycle paths with the senseBox:bike and monitored local birds with smart bird houses.",
     dashboard: {
@@ -159,7 +163,7 @@ const en = {
     },
   },
   mentorsJury: {
-    mentorsTitle: "Mentors",
+    mentorsTitle: "Mentors - re:edu",
     mentorsLead: "Ask them anything — that's what they're here for.",
     areaOfInterest: "Area of interest",
     teams: {
@@ -167,9 +171,11 @@ const en = {
       remote: "Remote",
     },
     awarenessInfo: "Ask them for help in case of interpersonal issues.",
+    mentors42Title: "Mentors - 42Heilbronn",
     juryTitle: "Jury",
     orgaTitle: "Orga team",
-    orgaLead: "Questions about organisation or accreditation? They are your men and women.",
+    orgaLead:
+      "Questions about organisation or accreditation? They are your men and women.",
   },
   teams: {
     title: "Teams",
@@ -200,7 +206,8 @@ const en = {
       "At least 6 characters. Share it only within your team — anyone who knows it can edit your team.",
     editTitle: "Team details",
     ideaLabel: "Your idea",
-    ideaHint: "What do you want to build, and which data will you use? Up to 2000 characters.",
+    ideaHint:
+      "What do you want to build, and which data will you use? Up to 2000 characters.",
     membersLabel: "Members",
     membersHint: "Up to 6 people.",
     memberPlaceholder: "Name of a team member",
@@ -213,7 +220,8 @@ const en = {
     saved: "Saved.",
     viewOverview: "← See all teams",
     deleteTitle: "Delete this team",
-    deleteBody: "Removes your team and its entry from the overview. This cannot be undone.",
+    deleteBody:
+      "Removes your team and its entry from the overview. This cannot be undone.",
     deleteConfirm: "Really delete this team? This cannot be undone.",
     signInToManage: "Sign in to manage {team}.",
     deleteButton: "Delete team",

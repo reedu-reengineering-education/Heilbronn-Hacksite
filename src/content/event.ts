@@ -81,19 +81,20 @@ export const schedule: ScheduleDay[] = [
       {
         start: "10:30",
         end: "11:00",
-        title: "Registration",
+        title: "Registration and Accreditiation",
         detail: "Check in at the accreditation desk.",
       },
       {
         start: "11:00",
         end: "11:30",
-        title: "Welcome & opening",
-        detail: "Who are we? What are the goals for these three days? An overview of what's ahead.",
+        title: "Presentation: Welcome & opening",
+        detail:
+          "Who are we? What are the goals for these three days? An overview of what's ahead.",
       },
       {
         start: "11:30",
         end: "12:00",
-        title: "Input: what do we have?",
+        title: "Presentation: What do we have? Data, Devices, Goals and More",
         detail:
           "An introduction to the available datasets (temperature, particulate matter, urban greening, traffic) and sensors (senseBox etc.). What can you do with them, and what sources of error should you watch out for?",
       },
@@ -108,7 +109,7 @@ export const schedule: ScheduleDay[] = [
         end: "14:00",
         title: "Pitches & team formation",
         detail:
-          "Teams that still need members pitch their idea on stage (60 seconds). The city presents the challenge. Teams form and agree on their plans with the mentors.",
+          "Teams that still need members pitch their idea on stage (60 seconds). Teams form and agree on their plans with the mentors.",
       },
       {
         start: "14:00",
@@ -128,7 +129,8 @@ export const schedule: ScheduleDay[] = [
         end: "16:00",
         title: "Workshop slot 1 (optional)",
         kind: "workshop",
-        detail: "Q&A session: pick the workshop that interests you.",
+        detail:
+          "Q&A session: pick the workshop that interests you. Vote in Mattermost",
       },
       {
         start: "18:00",
@@ -169,7 +171,7 @@ export const schedule: ScheduleDay[] = [
         title: "Workshop slot 2 (optional)",
         kind: "workshop",
         detail:
-          "Pick a workshop that interests you. Ad-hoc workshops on topics that several teams need may be added.",
+          "Pick a workshop that interests you. Ad-hoc workshops on topics that several teams need may be added. Vote in Mattermost",
       },
       {
         start: "12:00",
@@ -231,20 +233,23 @@ export const schedule: ScheduleDay[] = [
         start: "13:00",
         end: "14:30",
         title: "Final work phase",
+        detail: "Finalize your project and your presentation!",
         kind: "work",
       },
       {
         start: "14:30",
         end: "15:00",
         title: "Exhibition setup",
-        detail: "Each team sets up its own space: one monitor and one table per team.",
+        detail:
+          "Each team sets up its own space: one monitor and one table per team.",
       },
       {
         start: "15:00",
         end: "16:00",
         title: "Exhibition",
         kind: "finale",
-        detail: "All projects are shown as an open-space fair. Participants vote for their favourites.",
+        detail:
+          "All projects are shown as an open-space fair. Jury, Mentors and Staff vote for their favourites, best 5 Teams make it to the stage.",
       },
       {
         start: "16:15",
@@ -252,7 +257,7 @@ export const schedule: ScheduleDay[] = [
         title: "🏆 Finale",
         kind: "finale",
         detail:
-          "The teams that advanced from the exhibition present their results on the stage (about 5–10 minutes per team).",
+          "The 5 teams that advanced from the exhibition present their results on the stage (about 5 minutes per team).",
       },
       {
         start: "17:15",
@@ -264,7 +269,8 @@ export const schedule: ScheduleDay[] = [
         end: "18:00",
         title: "Award ceremony & certificates",
         kind: "finale",
-        detail: "Prizes (if any) and certificates of participation for everyone.",
+        detail:
+          "Prizes (if any) and certificates of participation for everyone.",
       },
     ],
   },
@@ -293,7 +299,19 @@ export const faq: FaqEntry[] = [
 /* ---------------------------------------------------------- organisations */
 
 export const organisations = [
-  { name: "Arkadia", logo: "/organisations/arkadia.png", link: "https://arkadia.hn/" },
-  { name: "aim", logo: "/organisations/aim.svg", link: "https://www.aim-akademie.org/" },
-  { name: "re:edu", logo: "/organisations/reedu.svg", link: "https://reedu.de/" },
+  {
+    name: "Arkadia",
+    logo: "/organisations/arkadia.png",
+    link: "https://arkadia.hn/",
+  },
+  {
+    name: "aim",
+    logo: "/organisations/aim.svg",
+    link: "https://www.aim-akademie.org/",
+  },
+  {
+    name: "re:edu",
+    logo: "/organisations/reedu.svg",
+    link: "https://reedu.de/",
+  },
 ] as const;

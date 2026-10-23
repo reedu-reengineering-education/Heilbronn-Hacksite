@@ -89,7 +89,7 @@ export function ScheduleCard({ day }: { day: ScheduleDay }) {
         >
           {heading}
           <p className="mt-2 text-sm leading-relaxed text-ink-muted">{day.summary}</p>
-          <button type="button" className={hint}>
+          <button type="button" className={`${hint} underline underline-offset-4`}>
             Show timetable ↻
           </button>
         </div>
