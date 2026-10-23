@@ -28,14 +28,18 @@ export const mentors: Mentor[] = [
 
 export type OrgaMember = {
   name: string;
+  role: string;
+  /** Matched against `organisations` in event.ts to show its logo. */
   organization: string;
   avatar?: string;
 };
 
 /** Placeholders until the orga team is confirmed. */
 export const orgaTeam: OrgaMember[] = [
-  { name: "TBA", organization: "aim", avatar: "/orga/placeholder.svg" },
-  { name: "TBA", organization: "aim", avatar: "/orga/placeholder.svg" },
-  { name: "TBA", organization: "Arkadia", avatar: "/orga/placeholder.svg" },
-  { name: "TBA", organization: "Arkadia", avatar: "/orga/placeholder.svg" },
+  { name: "Alexander Gartikow", role: " Accreditiation & Organization", organization: "aim", avatar: "/orga/alex.jpg" },
+  { name: "Marianna Georgiou", role: "Organization & Event Coordinator", organization: "Arkadia", avatar: "/orga/marianna.JPG" },
+  { name: "Thomas Bornheim", role: "visionary", organization: "Arkadia", avatar: "/orga/thomas.jpg" },
+  { name: "Jonas Götz", role: "technical support", organization: "42Heilbronn", avatar: "/orga/jonas.png" },
+  { name: "Rayan Mehadjeri", role: "technical support", organization: "42Heilbronn", avatar: "/orga/rayan.JPG" },
+  { name: "Maximilian Kneisl", role: "technical support", organization: "42Heilbronn", avatar: "/orga/maximilian.jpg" },
 ];
