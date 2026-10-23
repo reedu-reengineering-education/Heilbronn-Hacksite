@@ -1,4 +1,28 @@
 import type { Metadata } from "next";
+import { dictionary as d } from "@/i18n";
+import { Section } from "@/components/ui";
+
+export const metadata: Metadata = { title: d.teams.title };
+
+export default function TeamsPage() {
+  return (
+    <Section title={d.teams.title}>
+      <div className="rounded-card border border-dashed border-line bg-surface-sunken px-6 py-20 text-center sm:py-28">
+        <p className="font-mono text-4xl font-semibold uppercase tracking-tight text-ink sm:text-6xl">
+          Coming <span className="text-accent">soon</span>
+          <span className="animate-pulse text-accent">_</span>
+        </p>
+        <p className="mx-auto mt-4 max-w-md text-lg leading-relaxed text-ink-muted">
+          The team overview opens closer to the hackathon. Stay tuned!
+        </p>
+      </div>
+    </Section>
+  );
+}
+
+/* Team overview, hidden until it is ready to go live.
+
+import type { Metadata } from "next";
 import { asc, desc } from "drizzle-orm";
 import { db } from "@/lib/db";
 import { teams } from "@/lib/db/schema";
@@ -75,3 +99,4 @@ export default async function TeamsPage() {
     </Section>
   );
 }
+*/
