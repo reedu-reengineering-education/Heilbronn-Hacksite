@@ -15,6 +15,7 @@ const en = {
     resources: "Material",
     mentors: "Mentors & Jury",
     teams: "Teams",
+    judging: "Judging",
     background: "Background",
     skipToContent: "Skip to content",
   },
@@ -161,6 +162,62 @@ const en = {
       link: "dashboard",
       after: ", where you can explore it, compare it, and build on it.",
     },
+  },
+  judging: {
+    title: "Judging",
+    lead: "How the winning projects are picked on the last day.",
+    processTitle: "How it works",
+    steps: [
+      {
+        name: "Project fair",
+        description:
+          "On the last day every team shows its project at its own table. Walk around, demo, and answer questions.",
+      },
+      {
+        name: "Vote",
+        description:
+          "Jury and staff visit every table and vote. The 5 teams with the most votes go through to the finale.",
+      },
+      {
+        name: "Finale on stage",
+        description:
+          "The top 5 teams present their project on stage, and the jury decides on the winners.",
+      },
+    ],
+    criteriaTitle: "Criteria",
+    criteriaLead: "The jury looks at these six points.",
+    criteria: [
+      {
+        name: "Teamwork",
+        description:
+          "How well did you work together, share the tasks, and bring everyone's skills into the project?",
+      },
+      {
+        name: "Innovation & Originality",
+        description:
+          "Is the idea new or a fresh take on an existing problem? Does it surprise us?",
+      },
+      {
+        name: "Functionality & Technical Execution",
+        description:
+          "Does it work? How well is it built, and how well are the data and tools used?",
+      },
+      {
+        name: "Impact & Feasibility",
+        description:
+          "Does it tackle a real problem for Heilbronn, and could it realistically be continued or used?",
+      },
+      {
+        name: "User Experience & Design",
+        description:
+          "Is it easy to understand and pleasant to use? Does the design help tell the story?",
+      },
+      {
+        name: "Presentation & Demo",
+        description:
+          "How clearly do you explain the problem, your solution, and show it in action?",
+      },
+    ],
   },
   mentorsJury: {
     mentorsTitle: "Mentors - re:edu",
