@@ -84,7 +84,7 @@ export const orgaTeam: OrgaMember[] = [
     name: "Marianna Georgiou",
     role: "Organization & Event Coordinator",
     organization: "Arkadia",
-    avatar: "/orga/marianna.JPG",
+    avatar: "/orga/marianna.jpg",
   },
   {
     name: "Thomas Bornheim",
@@ -102,7 +102,7 @@ export const orgaTeam: OrgaMember[] = [
     name: "Rayan Mehadjeri",
     role: "Technical Support",
     organization: "42Heilbronn",
-    avatar: "/orga/rayan.JPG",
+    avatar: "/orga/rayan.jpg",
   },
   {
     name: "Maximilian Kneisl",
