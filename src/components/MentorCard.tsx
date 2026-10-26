@@ -2,7 +2,8 @@
 
 import Image from "next/image";
 import { useState } from "react";
-import type { Mentor } from "@/content/people";
+import type { Mentor, OrgaMember } from "@/content/people";
+import { organisations } from "@/content/event";
 import { cardClass } from "@/components/ui";
 import { dictionary as d } from "@/i18n";
 
@@ -19,7 +20,7 @@ function initials(name: string): string {
     .join("");
 }
 
-function Avatar({ mentor }: { mentor: Mentor }) {
+function Avatar({ mentor }: { mentor: Pick<Mentor, "name" | "avatar"> }) {
   if (mentor.avatar) {
     return (
       <div className="relative h-40 w-40 shrink-0 overflow-hidden rounded-full border border-line bg-surface-sunken">
@@ -57,6 +58,35 @@ function TeamBadge({ team }: { team: NonNullable<Mentor["team"]> }) {
         </a>
       ) : null}
     </span>
+  );
+}
+
+/** Pill naming the member's organization, with its logo when we have one. */
+function OrganizationBadge({ organization }: { organization: string }) {
+  const logo = organisations.find((o) => o.name.toLowerCase() === organization.toLowerCase())?.logo;
+  return (
+    <span className="mt-2 inline-flex items-center gap-1.5 rounded-full border border-line bg-surface-sunken px-2.5 py-0.5 text-xs font-medium text-ink-muted">
+      {logo ? (
+        <span className="relative h-4 w-4 shrink-0">
+          <Image src={logo} alt="" fill className="object-contain" sizes="1rem" />
+        </span>
+      ) : null}
+      {organization}
+    </span>
+  );
+}
+
+/** Orga team card: same layout as a mentor card, with role and organization. */
+export function OrgaCard({ member }: { member: OrgaMember }) {
+  return (
+    <li className={`${cardClass} flex flex-col items-center gap-4 p-5 text-center`}>
+      <Avatar mentor={member} />
+      <div>
+        <h3 className="text-lg font-semibold text-ink">{member.name}</h3>
+        <p className="mt-1 text-sm font-medium text-accent">{member.role}</p>
+        <OrganizationBadge organization={member.organization} />
+      </div>
+    </li>
   );
 }
 
