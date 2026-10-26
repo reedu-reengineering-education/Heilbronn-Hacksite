@@ -75,7 +75,7 @@ export type OrgaMember = {
 /** Placeholders until the orga team is confirmed. */
 export const orgaTeam: OrgaMember[] = [
   {
-    name: "Alexander Gartikow",
+    name: "Alexander Gantikow",
     role: " Accreditiation & Organization",
     organization: "aim",
     avatar: "/orga/alex.jpg",
