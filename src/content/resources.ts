@@ -98,18 +98,18 @@ export const hardware: ResourceItem[] = [
       },
     ],
   },
-  {
-    name: "Raspberry Pi + Pi Cam",
-    image: "/resources/pi.jpeg",
-    summary: docs("Raspberry Pi with Camera."),
-    badge: docs("Microcontroller"),
-    links: [
-      {
-        label: docs("Documentation"),
-        url: "https://www.raspberrypi.com/",
-      },
-    ],
-  },
+  // {
+  //   name: "Raspberry Pi + Pi Cam",
+  //   image: "/resources/pi.jpeg",
+  //   summary: docs("Raspberry Pi with Camera."),
+  //   badge: docs("Microcontroller"),
+  //   links: [
+  //     {
+  //       label: docs("Documentation"),
+  //       url: "https://www.raspberrypi.com/",
+  //     },
+  //   ],
+  // },
   {
     name: "and more!",
     image: "/resources/more.png",
