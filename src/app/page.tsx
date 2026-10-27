@@ -1,6 +1,7 @@
-import { event } from "@/content/event";
+import { encodedChatUrl, event } from "@/content/event";
 import { dictionary as d } from "@/i18n";
 import { AccordionItem, Bracket, ButtonLink, Card, Section } from "@/components/ui";
+import { ChatLink } from "@/components/ChatLink";
 import { HeroCountdown } from "@/components/HeroCountdown";
 import { Logo } from "@/components/Logo";
 
@@ -55,6 +56,15 @@ export default function HomePage() {
           </p>
         </div>
       </section>
+
+      {/* ------------------------------------------------------------ chat */}
+      {event.contact.chatUrl ? (
+        <Section title={d.team.chatTitle} lead={d.team.chatLead} className="pb-0 sm:pb-0">
+          <ChatLink encoded={encodedChatUrl} variant="primary">
+            {d.team.chatCta}
+          </ChatLink>
+        </Section>
+      ) : null}
 
       {/* ------------------------------------------------------------ what */}
       <Section title={d.home.whatTitle}>
