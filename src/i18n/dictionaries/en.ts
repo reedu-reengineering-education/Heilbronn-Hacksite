@@ -181,6 +181,7 @@ const en = {
         name: "Fair setup",
         description:
           "We start setting up the fair in front of the stage. Every team gets 1 table and 1 screen. Bringing another laptop screen or something printed is up to you. Keep in mind you only have a few minutes to present your work to each visitor.",
+        hint: "Make sure your team name is visible, so the judges know who to vote for. It has to be the same name as on the Teams page: only teams listed there can enter the competition.",
       },
       {
         time: "14:30 – 16:00",
