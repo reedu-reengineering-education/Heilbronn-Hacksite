@@ -224,6 +224,7 @@ export const schedule: ScheduleDay[] = [
         start: "10:00",
         end: "12:00",
         title: "Work phase 4",
+        detail: "Submit your code by 12:00 (you can keep changing it afterwards), see Final Day & Judging.",
         kind: "work",
       },
       {
@@ -234,20 +235,20 @@ export const schedule: ScheduleDay[] = [
       },
       {
         start: "13:00",
-        end: "14:30",
+        end: "14:00",
         title: "Final work phase",
         detail: "Finalize your project and your presentation!",
         kind: "work",
       },
       {
-        start: "14:30",
-        end: "15:00",
+        start: "14:00",
+        end: "14:30",
         title: "Exhibition setup",
         detail:
           "Each team sets up its own space: one monitor and one table per team.",
       },
       {
-        start: "15:00",
+        start: "14:30",
         end: "16:00",
         title: "Exhibition",
         kind: "finale",
@@ -256,24 +257,19 @@ export const schedule: ScheduleDay[] = [
       },
       {
         start: "16:15",
-        end: "17:15",
+        end: "17:30",
         title: "🏆 Finale",
         kind: "finale",
         detail:
-          "The 5 teams that advanced from the exhibition present their results on the stage (about 5 minutes per team).",
-      },
-      {
-        start: "17:15",
-        end: "17:30",
-        title: "Jury deliberation",
+          "The 5 teams that advanced from the exhibition present their results on the stage: 10 minutes per team, 5 to present and 5 for questions from the jury.",
       },
       {
         start: "17:30",
         end: "18:00",
-        title: "Award ceremony & certificates",
+        title: "Jury decision & award ceremony",
         kind: "finale",
         detail:
-          "Prizes (if any) and certificates of participation for everyone.",
+          "The jury announces the winners. Prizes and certificates of participation for everyone.",
       },
     ],
   },
