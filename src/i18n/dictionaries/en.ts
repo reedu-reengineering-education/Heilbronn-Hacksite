@@ -15,7 +15,7 @@ const en = {
     resources: "Material",
     mentors: "Mentors & Jury",
     teams: "Teams",
-    judging: "Judging",
+    judging: "Final Day",
     background: "Background",
     skipToContent: "Skip to content",
   },
@@ -164,24 +164,43 @@ const en = {
     },
   },
   judging: {
-    title: "Judging",
-    lead: "How the winning projects are picked on the last day.",
-    processTitle: "How it works",
-    steps: [
+    title: "Final Day & Judging",
+    lead: "What happens on the last day, and how the winning projects are picked.",
+    timetableTitle: "Timetable",
+    timetable: [
       {
-        name: "Project fair",
+        time: "12:00",
+        name: "Submit your code",
         description:
-          "On the last day every team shows its project at its own table. Walk around, demo, and answer questions.",
+          "Until 12:00, please submit your code somewhere the judges can see it: publish it as open source and share the link with the mentors, or put it in a GitHub repository and invite these accounts:",
+        github: ["umut0", "felixerdy", "Thiemann96", "janwirwahn"],
+        note: "You can keep working on your code after 12:00, no problem. We just need to know where to find it. Prefer to share it another way? Let us know! For common open source licenses you can use, see below.",
       },
       {
-        name: "Vote",
+        time: "14:00",
+        name: "Fair setup",
         description:
-          "Jury and staff visit every table and vote. The 5 teams with the most votes go through to the finale.",
+          "We start setting up the fair in front of the stage. Every team gets 1 table and 1 screen. Bringing another laptop screen or something printed is up to you. Keep in mind you only have a few minutes to present your work to each visitor.",
       },
       {
+        time: "14:30 – 16:00",
+        name: "Fair & vote",
+        description:
+          "The fair is open. Mentors, judges and staff each vote for their 3 favourite projects. The 5 best projects present their idea on stage.",
+        highlight:
+          "Heads up: if you are one of the 5 finalists, there is no time to prepare a presentation after the fair. So be ready beforehand. A presentation or a live demo, it's up to you!",
+      },
+      {
+        time: "16:15",
         name: "Finale on stage",
         description:
-          "The top 5 teams present their project on stage, and the jury decides on the winners.",
+          "The 5 finalists get 10 minutes each: 5 minutes to present, 5 for questions from the jury. We cut you off after 5 minutes, so plan accordingly!",
+      },
+      {
+        time: "17:30",
+        name: "Jury decision & award ceremony",
+        description:
+          "The jury decides on the winners, using the criteria below, and the winners are announced.",
       },
     ],
     criteriaTitle: "Criteria",
@@ -218,6 +237,52 @@ const en = {
           "How clearly do you explain the problem, your solution, and show it in action?",
       },
     ],
+    licensesTitle: "Open source licenses",
+    licensesLead:
+      "A license tells others what they may do with your code. Add a LICENSE file to your repository. Here are some common ones:",
+    licenses: [
+      {
+        name: "MIT",
+        url: "https://opensource.org/license/mit",
+        description:
+          "Very permissive. Anyone can use, change and sell your code, as long as they keep your copyright notice.",
+      },
+      {
+        name: "Apache 2.0",
+        url: "https://www.apache.org/licenses/LICENSE-2.0",
+        description:
+          "Permissive like MIT, plus an explicit patent grant and a requirement to note changes.",
+      },
+      {
+        name: "GPL 3.0",
+        url: "https://www.gnu.org/licenses/gpl-3.0.html",
+        description:
+          "Copyleft. Anyone who distributes your code or a modified version must publish it under the GPL too.",
+      },
+      {
+        name: "AGPL 3.0",
+        url: "https://www.gnu.org/licenses/agpl-3.0.html",
+        description:
+          "Like the GPL, but also applies when the software is only offered over a network, e.g. as a web app.",
+      },
+      {
+        name: "MPL 2.0",
+        url: "https://www.mozilla.org/en-US/MPL/2.0/",
+        description:
+          "Weak copyleft. Changes to your files must stay open, but they can be combined with closed-source code.",
+      },
+      {
+        name: "CC BY 4.0",
+        url: "https://creativecommons.org/licenses/by/4.0/",
+        description:
+          "For data, texts and images rather than code. Anyone can reuse them, as long as they credit you.",
+      },
+    ],
+    licensesHelp: {
+      before: "Not sure which one fits? ",
+      link: "choosealicense.com",
+      after: " helps you pick.",
+    },
   },
   mentorsJury: {
     mentorsTitle: "Mentors - re:edu",
