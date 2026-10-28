@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { dictionary as d } from "@/i18n";
 import { Card, Section } from "@/components/ui";
 
@@ -51,6 +52,14 @@ export default function JudgingPage() {
                         </li>
                       ))}
                     </ul>
+                  ) : null}
+                  {entry.hint ? (
+                    <p className="mt-3 rounded-lg border-l-2 border-accent/60 bg-surface-muted px-4 py-3 text-ink">
+                      {entry.hint}{" "}
+                      <Link href="/teams" className={linkClass}>
+                        {d.nav.teams} →
+                      </Link>
+                    </p>
                   ) : null}
                   {entry.highlight ? (
                     <p className="mt-3 rounded-lg border-l-4 border-accent bg-accent/10 px-4 py-3 font-semibold text-ink">
