@@ -42,3 +42,47 @@ export async function verifyTeamToken(token: string): Promise<TeamSession | null
     return null;
   }
 }
+
+/* ---------------------------------------------------------------- voting */
+
+export const VOTER_COOKIE = "hacksite_voter";
+export const RESULTS_COOKIE = "hacksite_results";
+
+/** Proves the vote passphrase was entered; `voterId` ties the browser to its vote. */
+export type VoterSession = { voterId: string };
+
+export async function signVoterToken(session: VoterSession): Promise<string> {
+  return new SignJWT({ ...session, kind: "voter" })
+    .setProtectedHeader({ alg: "HS256" })
+    .setIssuedAt()
+    .setExpirationTime(`${MAX_AGE_SECONDS}s`)
+    .sign(secret());
+}
+
+export async function verifyVoterToken(token: string): Promise<VoterSession | null> {
+  try {
+    const { payload } = await jwtVerify(token, secret());
+    if (payload.kind !== "voter" || typeof payload.voterId !== "string") return null;
+    return { voterId: payload.voterId };
+  } catch {
+    return null;
+  }
+}
+
+/** Proves the organiser passphrase was entered on the results page. */
+export async function signResultsToken(): Promise<string> {
+  return new SignJWT({ kind: "results" })
+    .setProtectedHeader({ alg: "HS256" })
+    .setIssuedAt()
+    .setExpirationTime(`${MAX_AGE_SECONDS}s`)
+    .sign(secret());
+}
+
+export async function verifyResultsToken(token: string): Promise<boolean> {
+  try {
+    const { payload } = await jwtVerify(token, secret());
+    return payload.kind === "results";
+  } catch {
+    return false;
+  }
+}
