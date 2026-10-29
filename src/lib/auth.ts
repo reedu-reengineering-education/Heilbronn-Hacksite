@@ -71,11 +71,20 @@ export function parseMembers(raw: string): string[] {
   return members;
 }
 
-/** Constant-time comparison against the organiser passphrase from the environment. */
-export function isAdminPassphrase(given: string): boolean {
-  const expected = process.env.ADMIN_PASSPHRASE ?? "";
+/** Constant-time comparison; an unset expected value never matches. */
+function matchesEnvPassphrase(given: string, expected: string | undefined): boolean {
   if (!expected) return false;
   const a = Buffer.from(given);
   const b = Buffer.from(expected);
   return a.length === b.length && timingSafeEqual(a, b);
+}
+
+/** The organiser passphrase from the environment. */
+export function isAdminPassphrase(given: string): boolean {
+  return matchesEnvPassphrase(given, process.env.ADMIN_PASSPHRASE);
+}
+
+/** The passphrase handed out to the audience for /vote. */
+export function isVotePassphrase(given: string): boolean {
+  return matchesEnvPassphrase(given, process.env.VOTE_PASSPHRASE);
 }

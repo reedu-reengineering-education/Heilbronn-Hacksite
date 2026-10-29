@@ -1,7 +1,9 @@
 import {
   boolean,
+  integer,
   jsonb,
   pgTable,
+  primaryKey,
   serial,
   text,
   timestamp,
@@ -35,3 +37,25 @@ export const teams = pgTable(
 );
 
 export type Team = typeof teams.$inferSelect;
+
+/** How many teams each voter may vote for (one vote per team). */
+export const VOTES_PER_VOTER = 3;
+
+/**
+ * One row per (voter, team). Voters are anonymous: `voterId` is a random id
+ * kept in a signed cookie, so a returning browser can change or withdraw its
+ * votes.
+ */
+export const votes = pgTable(
+  "votes",
+  {
+    voterId: text("voter_id").notNull(),
+    teamId: integer("team_id")
+      .notNull()
+      .references(() => teams.id, { onDelete: "cascade" }),
+    updatedAt: timestamp("updated_at", { withTimezone: true }).notNull().defaultNow(),
+  },
+  (t) => [primaryKey({ columns: [t.voterId, t.teamId] })],
+);
+
+export type Vote = typeof votes.$inferSelect;
