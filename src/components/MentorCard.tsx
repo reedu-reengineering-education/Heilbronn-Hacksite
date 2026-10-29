@@ -146,12 +146,15 @@ export function MentorCard({ mentor }: { mentor: Mentor }) {
           style={{ transform: "rotateY(180deg)" }}
           className={`${face} ${cardClass} relative cursor-pointer overflow-hidden bg-surface-sunken`}
         >
+          {/* Eager: a lazy image on the hidden back face gets cancelled by the
+              browser, and flipping (a CSS transform) never re-triggers it. */}
           <Image
             src={alt}
             alt={`${mentor.name}`}
             fill
+            loading="eager"
             className="object-cover"
-            sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+            sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw"
           />
         </div>
       </div>
