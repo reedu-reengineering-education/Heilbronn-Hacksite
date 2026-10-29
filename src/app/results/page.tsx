@@ -24,18 +24,18 @@ export default async function ResultsPage() {
   }
 
   const votesCount = count(votes.voterId);
-  // Left join so teams without votes still fill up the places.
+  // Left join so teams without votes still fill up the places. The stage
+  // reveal uses the top PLACES; the rest sit behind a discreet toggle.
   const ranking = await db
     .select({ id: teams.id, name: teams.name, emoji: teams.emoji, votes: votesCount })
     .from(teams)
     .leftJoin(votes, eq(votes.teamId, teams.id))
     .groupBy(teams.id)
-    .orderBy(desc(votesCount), asc(teams.name))
-    .limit(PLACES);
+    .orderBy(desc(votesCount), asc(teams.name));
 
   return (
     <Section title={d.results.title}>
-      <Reveal d={d} ranking={ranking} />
+      <Reveal d={d} ranking={ranking.slice(0, PLACES)} rest={ranking.slice(PLACES)} />
     </Section>
   );
 }
